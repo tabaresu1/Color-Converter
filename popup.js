@@ -26,12 +26,15 @@ function rgbToCmyk(r, g, b) {
 }
 
 document.getElementById("rgba").addEventListener("input", function () {
-  let match = this.value.match(/rgba?\\((\\d+),(\\d+),(\\d+)(?:,\\d*\\.?\\d+)?\\)/);
+  let match = this.value.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
   if (match) {
     let [, r, g, b] = match.map(Number);
-    document.getElementById("hex").value = rgbaToHex(r, g, b);
+    let hex = rgbaToHex(r, g, b);
+    document.getElementById("hex").value = hex;
+    document.getElementById("preview-hex").style.background = hex;
   } else {
     document.getElementById("hex").value = "";
+    document.getElementById("preview-hex").style.background = "transparent";
   }
 });
 
@@ -44,14 +47,17 @@ document.getElementById("hexInput").addEventListener("input", function () {
   let hex = this.value.replace(/[^0-9a-f]/gi, "").toUpperCase();
   this.value = hex;
   if (hex.length === 6) {
-    document.getElementById("rgbaOutput").value = hexToRgba(hex);
+    let rgba = hexToRgba(hex);
+    document.getElementById("rgbaOutput").value = rgba;
+    document.getElementById("preview-rgba").style.background = rgba;
   } else {
     document.getElementById("rgbaOutput").value = "";
+    document.getElementById("preview-rgba").style.background = "transparent";
   }
 });
 
 document.getElementById("toCMYK").addEventListener("input", function () {
-  let match = this.value.match(/rgb?\\((\\d+),(\\d+),(\\d+)\\)/);
+  let match = this.value.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
   if (match) {
     let [, r, g, b] = match.map(Number);
     document.getElementById("cmykOutput").value = rgbToCmyk(r, g, b);

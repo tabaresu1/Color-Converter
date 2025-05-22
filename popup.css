@@ -1,21 +1,17 @@
 :root {
-    /* Light Theme */
     --primary-color: #00438C;
     --background: #ffffff;
     --text-color: #333333;
     --input-bg: #f8f8f8;
     --border-color: #dddddd;
-    --preview-border: #cccccc;
 }
 
-/* Dark Theme */
 body.dark-mode {
     --primary-color: #66A9FF;
     --background: #1a1a1a;
     --text-color: #e0e0e0;
     --input-bg: #2d2d2d;
     --border-color: #444444;
-    --preview-border: #666666;
 }
 
 /* Estilos Gerais */
@@ -51,6 +47,7 @@ body {
     cursor: pointer;
 }
 
+/* Abas */
 .tabs {
     display: flex;
     gap: 8px;
@@ -71,6 +68,15 @@ body {
     color: white;
 }
 
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Conversores */
 .converter {
     margin-bottom: 25px;
 }
@@ -83,11 +89,12 @@ body {
 }
 
 input[type="number"], input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
     background: var(--background);
     color: var(--text-color);
-    border: 1px solid var(--border-color);
-    padding: 8px;
-    border-radius: 6px;
 }
 
 .result {
@@ -98,21 +105,19 @@ input[type="number"], input[type="text"] {
 
 .result input {
     flex: 1;
+    padding: 8px;
     background: var(--background);
     color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
 .copy-btn {
+    padding: 8px 15px;
     background: var(--primary-color);
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    transition: opacity 0.3s;
-}
-
-.copy-btn:hover {
-    opacity: 0.9;
 }
 
 .preview {
@@ -123,5 +128,5 @@ input[type="number"], input[type="text"] {
     width: 100%;
     height: 80px;
     border-radius: 8px;
-    border: 2px solid var(--preview-border);
+    border: 2px solid var(--border-color);
 }

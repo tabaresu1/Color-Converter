@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversor de Cores</title>
-    <link rel="stylesheet" href="popup.css"> <!-- Verifique o nome do arquivo CSS -->
+    <link rel="stylesheet" href="popup.css">
+    <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
-    <!-- Toggle Dark Mode -->
     <div class="theme-toggle">
         <button id="themeBtn">🌓 Alternar Tema</button>
     </div>
@@ -15,7 +15,6 @@
     <div class="container">
         <h1>🎨 Conversor de Cores</h1>
         
-        <!-- Abas -->
         <div class="tabs">
             <button class="tab-btn active" data-tab="hex">HEX</button>
             <button class="tab-btn" data-tab="rgba">RGBA</button>
@@ -24,14 +23,13 @@
 
         <!-- Aba HEX -->
         <div id="hex" class="tab-content active">
-            <!-- Conversor RGBA → HEX -->
             <div class="converter">
                 <h2>RGBA → HEX</h2>
                 <div class="input-group">
                     <label>R: <input type="number" id="r" min="0" max="255" value="0"></label>
                     <label>G: <input type="number" id="g" min="0" max="255" value="0"></label>
                     <label>B: <input type="number" id="b" min="0" max="255" value="0"></label>
-                    <label>A: <input type="number" id="a" min="0" max="1" step="0.1" value="1"></label>
+                    <label>A: <input type="number" id="a" min="0" max="1" step="0.01" value="1"></label>
                 </div>
                 <div class="result">
                     <input type="text" id="hexResult" readonly>
@@ -39,7 +37,6 @@
                 </div>
             </div>
 
-            <!-- Conversor CMYK → HEX -->
             <div class="converter">
                 <h2>CMYK → HEX</h2>
                 <div class="input-group">
@@ -54,23 +51,42 @@
                 </div>
             </div>
 
-            <!-- Pré-visualização -->
             <div class="preview">
                 <h3>Visualização da Cor</h3>
                 <div id="colorPreview"></div>
             </div>
         </div>
 
-        <!-- Aba RGBA (adicione conteúdo semelhante) -->
+        <!-- Aba RGBA (completa) -->
         <div id="rgba" class="tab-content">
-            <!-- ... -->
+            <div class="converter">
+                <h2>HEX → RGBA</h2>
+                <div class="input-group">
+                    <label>HEX: <input type="text" id="hexInput" placeholder="#RRGGBB ou #RRGGBBAA" maxlength="9"></label>
+                </div>
+                <div class="result">
+                    <input type="text" id="rgbaResult" readonly>
+                    <button class="copy-btn" data-target="rgbaResult">📋 Copiar</button>
+                </div>
+            </div>
         </div>
 
-        <!-- Aba CMYK (adicione conteúdo semelhante) -->
+        <!-- Aba CMYK (completa) -->
         <div id="cmyk" class="tab-content">
-            <!-- ... -->
+            <div class="converter">
+                <h2>RGB → CMYK</h2>
+                <div class="input-group">
+                    <label>R: <input type="number" id="rCmyk" min="0" max="255" value="0"></label>
+                    <label>G: <input type="number" id="gCmyk" min="0" max="255" value="0"></label>
+                    <label>B: <input type="number" id="bCmyk" min="0" max="255" value="0"></label>
+                </div>
+                <div class="result">
+                    <input type="text" id="cmykResult" readonly>
+                    <button class="copy-btn" data-target="cmykResult">📋 Copiar</button>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="popup.js"></script> <!-- Verifique o nome do arquivo JS -->
+    <script src="popup.js"></script>
 </body>
 </html>

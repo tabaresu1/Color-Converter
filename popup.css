@@ -131,3 +131,31 @@ input[type="number"], input[type="text"] {
     border-radius: 8px;
     border: 2px solid var(--border-color);
 }
+
+/* Adicione estas regras ao final do arquivo existente */
+
+/* Melhorias para inputs */
+input[type="number"]:focus, input[type="text"]:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+/* Feedback visual para cópia */
+.copy-btn:active {
+    transform: scale(0.95);
+}
+
+/* Ajuste para abas menores */
+@media (max-width: 500px) {
+    .input-group {
+        grid-template-columns: 1fr;
+    }
+    .tab-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+/* Validação visual para HEX inválido */
+input:invalid {
+    border-color: #ff4444 !important;
+}

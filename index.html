@@ -3,40 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Cores</title>
+    <title>Conversor de Cores com Abas</title>
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
     <div class="container">
-        <h1>Conversor RGBA ↔ HEX</h1>
+        <h1>Conversor de Cores</h1>
         
-        <!-- Conversor RGBA para HEX -->
-        <div class="converter">
-            <h2>RGBA → HEX</h2>
-            <div class="input-group">
-                <label>R: <input type="number" id="r" min="0" max="255" value="0"></label>
-                <label>G: <input type="number" id="g" min="0" max="255" value="0"></label>
-                <label>B: <input type="number" id="b" min="0" max="255" value="0"></label>
-                <label>A: <input type="number" id="a" min="0" max="1" step="0.1" value="1"></label>
-            </div>
-            <div class="result">
-                <input type="text" id="hexResult" readonly>
-                <button id="copyBtn">Copiar</button>
-            </div>
-            <div class="preview" id="previewBox"></div>
+        <!-- Abas -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="hex">HEX</button>
+            <button class="tab-btn" data-tab="rgba">RGBA</button>
+            <button class="tab-btn" data-tab="cmyk">CMYK</button>
         </div>
 
-        <!-- Conversor HEX para RGBA -->
-        <div class="converter">
-            <h2>HEX → RGBA</h2>
-            <div class="input-group">
-                <input type="text" id="hexInput" placeholder="#RRGGBB" maxlength="7">
+        <!-- Conteúdo das Abas -->
+        <div id="hex" class="tab-content active">
+            <!-- Conversor RGBA para HEX -->
+            <div class="converter">
+                <h2>RGBA → HEX</h2>
+                <div class="input-group">
+                    <label>R: <input type="number" id="r" min="0" max="255" value="0"></label>
+                    <label>G: <input type="number" id="g" min="0" max="255" value="0"></label>
+                    <label>B: <input type="number" id="b" min="0" max="255" value="0"></label>
+                    <label>A: <input type="number" id="a" min="0" max="1" step="0.1" value="1"></label>
+                </div>
+                <div class="result">
+                    <input type="text" id="hexResult" readonly>
+                    <button id="copyHex">Copiar HEX</button>
+                </div>
             </div>
-            <div class="result">
-                <input type="text" id="rgbaResult" readonly>
+
+            <!-- Conversor CMYK para HEX -->
+            <div class="converter">
+                <h2>CMYK → HEX</h2>
+                <div class="input-group">
+                    <label>C: <input type="number" id="c" min="0" max="100" value="0"></label>
+                    <label>M: <input type="number" id="m" min="0" max="100" value="0"></label>
+                    <label>Y: <input type="number" id="y" min="0" max="100" value="0"></label>
+                    <label>K: <input type="number" id="k" min="0" max="100" value="0"></label>
+                </div>
+                <div class="result">
+                    <input type="text" id="hexFromCmyk" readonly>
+                </div>
             </div>
-            <div class="preview" id="previewHex"></div>
+
+            <!-- Pré-visualização da Cor -->
+            <div class="preview">
+                <h3>Pré-Visualização</h3>
+                <div id="colorPreview"></div>
+            </div>
         </div>
+
+        <!-- Conteúdo das outras abas (RGBA e CMYK) pode ser adicionado aqui -->
     </div>
     <script src="popup.js"></script>
 </body>

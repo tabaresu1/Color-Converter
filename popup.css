@@ -1,65 +1,64 @@
 :root {
   --primary: #00438C;
-  --background: #f9f9f9;
-  --input-bg: #fff;
-  --border: #ddd;
-  --text: #333;
-  --shadow: rgba(0, 0, 0, 0.1);
+  --background: #ffffff;
+  --foreground: #f2f2f2;
+  --text: #222;
+  --border: #ccc;
+  --highlight: #e6f0ff;
 }
 
 body.dark {
   --primary: #66A9FF;
   --background: #1e1e1e;
-  --input-bg: #2c2c2c;
+  --foreground: #2c2c2c;
+  --text: #f0f0f0;
   --border: #444;
-  --text: #eee;
-  --shadow: rgba(255, 255, 255, 0.05);
+  --highlight: #1f2d3a;
 }
 
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: var(--background);
+  background: var(--background);
   color: var(--text);
   padding: 20px;
 }
 
 .theme-toggle {
   text-align: right;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-size: 14px;
 }
 
 .tabs {
   display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 12px;
 }
 
 .tab-btn {
-  flex: 1;
-  padding: 12px;
-  background-color: var(--input-bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  padding: 10px 16px;
+  border: none;
+  background: none;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: bold;
   color: var(--text);
   transition: 0.3s;
+  border-bottom: 3px solid transparent;
 }
 
 .tab-btn.active {
-  background-color: var(--primary);
-  color: white;
+  border-bottom: 3px solid var(--primary);
+  background-color: var(--highlight);
 }
 
 .tab-content {
   display: none;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  background-color: var(--input-bg);
-  box-shadow: 0 4px 10px var(--shadow);
+  padding: 16px;
+  background-color: var(--foreground);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
 }
 
 .tab-content.active {
@@ -68,31 +67,60 @@ body {
 
 h2 {
   margin-top: 0;
-  font-size: 20px;
+  font-size: 18px;
   color: var(--primary);
 }
 
 label {
-  font-weight: bold;
-  margin-right: 4px;
+  display: inline-block;
+  margin: 8px 0 4px;
+  font-weight: 600;
 }
 
-input[type=\"text\"], input[type=\"number\"] {
-  padding: 8px;
+input[type="text"], input[type="number"] {
+  padding: 10px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  width: 100px;
-  margin-bottom: 10px;
-  background-color: var(--input-bg);
+  background: var(--background);
   color: var(--text);
+  width: 100px;
+  margin-right: 10px;
+}
+
+.hex-field {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  width: fit-content;
+  background: var(--background);
+  margin-top: 10px;
+}
+
+.hex-field span {
+  background: var(--border);
+  padding: 10px;
+  font-weight: bold;
+  user-select: none;
+}
+
+.hex-field input {
+  border: none;
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: 16px;
   outline: none;
+  background-color: transparent;
+  color: var(--text);
+  width: 100px;
 }
 
 .output {
-  display: flex;
-  gap: 8px;
   margin-top: 12px;
-  margin-bottom: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .output input {
@@ -104,40 +132,15 @@ input[type=\"text\"], input[type=\"number\"] {
   color: white;
   border: none;
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .preview {
+  width: 100%;
   height: 40px;
-  border-radius: 10px;
-  margin-top: 8px;
+  margin-top: 10px;
+  border-radius: 6px;
   border: 1px solid var(--border);
-}
-
-.hex-field {
-  display: flex;
-  align-items: center;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  width: fit-content;
-}
-
-.hex-field span {
-  background: var(--border);
-  padding: 10px;
-  font-weight: bold;
-}
-
-.hex-field input {
-  border: none;
-  padding: 10px;
-  text-transform: uppercase;
-  font-size: 16px;
-  outline: none;
-  background-color: var(--input-bg);
-  color: var(--text);
-  width: 100px;
 }

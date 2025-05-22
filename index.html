@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#00438C" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="popup.css" />
+  <title>Conversor de Cores</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Conversor de Cores</h1>
+
+    <label for="rgba">RGBA para HEX:</label>
+    <input type="text" id="rgba" placeholder="Ex: rgba(0,67,140,1)" />
+    <div class="output">
+      <input type="text" id="hex" readonly />
+      <button onclick="copiarHEX()">Copiar HEX</button>
+    </div>
+
+    <label for="hexInput">HEX para RGBA:</label>
+    <div class="hex-field">
+      <span>#</span><input type="text" id="hexInput" maxlength="6" />
+    </div>
+    <div class="output">
+      <input type="text" id="rgbaOutput" readonly />
+    </div>
+
+    <label for="toCMYK">RGB para CMYK:</label>
+    <input type="text" id="toCMYK" placeholder="Ex: rgb(0,67,140)" />
+    <div class="output">
+      <input type="text" id="cmykOutput" readonly />
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,4 +1,3 @@
-
 function rgbaToHex(r, g, b) {
   return "#" + [r, g, b].map(x => {
     const hex = x.toString(16);
@@ -27,7 +26,7 @@ function rgbToCmyk(r, g, b) {
 }
 
 document.getElementById("rgba").addEventListener("input", function () {
-  let match = this.value.match(/rgba?\((\d+),(\d+),(\d+)(?:,\d*\.?\d+)?\)/);
+  let match = this.value.match(/rgba?\\((\\d+),(\\d+),(\\d+)(?:,\\d*\\.?\\d+)?\\)/);
   if (match) {
     let [, r, g, b] = match.map(Number);
     document.getElementById("hex").value = rgbaToHex(r, g, b);
@@ -52,7 +51,7 @@ document.getElementById("hexInput").addEventListener("input", function () {
 });
 
 document.getElementById("toCMYK").addEventListener("input", function () {
-  let match = this.value.match(/rgb?\((\d+),(\d+),(\d+)\)/);
+  let match = this.value.match(/rgb?\\((\\d+),(\\d+),(\\d+)\\)/);
   if (match) {
     let [, r, g, b] = match.map(Number);
     document.getElementById("cmykOutput").value = rgbToCmyk(r, g, b);
@@ -62,7 +61,7 @@ document.getElementById("toCMYK").addEventListener("input", function () {
 });
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
+  navigator.serviceWorker.register('./service-worker.js')
     .then(() => console.log("Service Worker registrado"))
     .catch(err => console.error("Erro no Service Worker", err));
 }

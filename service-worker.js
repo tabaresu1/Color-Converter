@@ -1,13 +1,12 @@
-
 self.addEventListener("install", e => {
   e.waitUntil(
     caches.open("app-cache").then(cache => {
       return cache.addAll([
-        "/",
-        "/index.html",
-        "/popup.css",
-        "/popup.js",
-        "/icon.png"
+        "./",
+        "./index.html",
+        "./popup.css",
+        "./popup.js",
+        "./icon.png"
       ]);
     })
   );

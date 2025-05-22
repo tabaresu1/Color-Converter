@@ -15,7 +15,6 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
         // Ativa a aba clicada
         btn.classList.add('active');
         document.getElementById(btn.dataset.tab).classList.add('active');
-        updateAll(); // Atualiza os resultados ao trocar de aba
     });
 });
 
@@ -24,6 +23,15 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 function rgbaToHex(r, g, b, a) {
     const toHex = (n) => Math.round(n).toString(16).padStart(2, '0').toUpperCase();
     return `#${toHex(r)}${toHex(g)}${toHex(b)}${a < 1 ? toHex(a * 255) : ''}`;
+}
+
+// CMYK → HEX
+function cmykToHex(c, m, y, k) {
+    c = c / 100; m = m / 100; y = y / 100; k = k / 100;
+    const r = Math.round(255 * (1 - c) * (1 - k));
+    const g = Math.round(255 * (1 - m) * (1 - k));
+    const b = Math.round(255 * (1 - y) * (1 - k));
+    return `#${rgbaToHex(r, g, b, 1)}`;
 }
 
 // HEX → RGBA
@@ -36,35 +44,9 @@ function hexToRgba(hex) {
     return `rgba(${r}, ${g}, ${b}, ${a})`;
 }
 
-// CMYK → HEX
-function cmykToHex(c, m, y, k) {
-    c = c / 100; m = m / 100; y = y / 100; k = k / 100;
-    const r = Math.round(255 * (1 - c) * (1 - k));
-    const g = Math.round(255 * (1 - m) * (1 - k));
-    const b = Math.round(255 * (1 - y) * (1 - k));
-    return `#${rgbaToHex(r, g, b, 1)}`;
-}
-
-// HEX → CMYK
-function hexToCmyk(hex) {
-    const rgba = hexToRgba(hex);
-    const [r, g, b] = rgba.match(/\d+/g).map(Number);
-    return rgbaToCmyk(r, g, b);
-}
-
-// RGBA → CMYK
-function rgbaToCmyk(r, g, b) {
-    r /= 255; g /= 255; b /= 255;
-    const k = 1 - Math.max(r, g, b);
-    const c = ((1 - r - k) / (1 - k)) * 100 || 0;
-    const m = ((1 - g - k) / (1 - k)) * 100 || 0;
-    const y = ((1 - b - k) / (1 - k)) * 100 || 0;
-    return `cmyk(${Math.round(c)}%, ${Math.round(m)}%, ${Math.round(y)}%, ${Math.round(k * 100)}%)`;
-}
-
 // ===== ATUALIZAÇÃO EM TEMPO REAL =====
 function updateAll() {
-    // Atualizações da aba HEX
+    // ABA HEX: RGBA → HEX
     const r = document.getElementById('r').value;
     const g = document.getElementById('g').value;
     const b = document.getElementById('b').value;
@@ -73,6 +55,7 @@ function updateAll() {
         document.getElementById('hexResult').value = rgbaToHex(r, g, b, a);
     }
 
+    // ABA HEX: CMYK → HEX
     const cHex = document.getElementById('cHex').value;
     const mHex = document.getElementById('mHex').value;
     const yHex = document.getElementById('yHex').value;
@@ -81,19 +64,7 @@ function updateAll() {
         document.getElementById('hexCmykResult').value = cmykToHex(cHex, mHex, yHex, kHex);
     }
 
-    // Atualizações da aba RGBA
-    const hexToRgbaInput = document.getElementById('hexToRgba').value;
-    if (hexToRgbaInput && /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$/.test(hexToRgbaInput)) {
-        document.getElementById('rgbaResult').value = hexToRgba(hexToRgbaInput);
-    }
-
-    // Atualizações da aba CMYK
-    const hexToCmykInput = document.getElementById('hexToCmyk').value;
-    if (hexToCmykInput && /^#?([A-Fa-f0-9]{6})$/.test(hexToCmykInput)) {
-        document.getElementById('cmykResult').value = hexToCmyk(hexToCmykInput);
-    }
-
-    // Pré-visualização
+    // Atualizar pré-visualização
     const activeHex = document.querySelector('.tab-content.active input[type="text"]').value;
     if (activeHex && activeHex.startsWith('#')) {
         document.getElementById('colorPreview').style.backgroundColor = activeHex;

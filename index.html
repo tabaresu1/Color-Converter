@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Cores com Abas</title>
+    <title>Conversor de Cores Avançado</title>
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
+    <!-- Toggle Dark Mode -->
+    <div class="theme-toggle">
+        <button id="themeBtn">🌓 Alternar Tema</button>
+    </div>
+
     <div class="container">
-        <h1>Conversor de Cores</h1>
+        <h1>🎨 Conversor de Cores</h1>
         
         <!-- Abas -->
         <div class="tabs">
@@ -17,9 +22,9 @@
             <button class="tab-btn" data-tab="cmyk">CMYK</button>
         </div>
 
-        <!-- Conteúdo das Abas -->
+        <!-- Conteúdo da Aba HEX -->
         <div id="hex" class="tab-content active">
-            <!-- Conversor RGBA para HEX -->
+            <!-- Conversor RGBA → HEX -->
             <div class="converter">
                 <h2>RGBA → HEX</h2>
                 <div class="input-group">
@@ -30,11 +35,11 @@
                 </div>
                 <div class="result">
                     <input type="text" id="hexResult" readonly>
-                    <button id="copyHex">Copiar HEX</button>
+                    <button class="copy-btn" data-target="hexResult">📋 Copiar</button>
                 </div>
             </div>
 
-            <!-- Conversor CMYK para HEX -->
+            <!-- Conversor CMYK → HEX -->
             <div class="converter">
                 <h2>CMYK → HEX</h2>
                 <div class="input-group">
@@ -44,13 +49,14 @@
                     <label>K: <input type="number" id="k" min="0" max="100" value="0"></label>
                 </div>
                 <div class="result">
-                    <input type="text" id="hexFromCmyk" readonly>
+                    <input type="text" id="hexCmykResult" readonly>
+                    <button class="copy-btn" data-target="hexCmykResult">📋 Copiar</button>
                 </div>
             </div>
 
-            <!-- Pré-visualização da Cor -->
+            <!-- Pré-visualização -->
             <div class="preview">
-                <h3>Pré-Visualização</h3>
+                <h3>Visualização da Cor</h3>
                 <div id="colorPreview"></div>
             </div>
         </div>

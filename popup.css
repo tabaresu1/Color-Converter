@@ -120,6 +120,7 @@ input[type="number"], input[type="text"] {
     cursor: pointer;
 }
 
+/* Pré-visualização */
 .preview {
     margin-top: 20px;
 }

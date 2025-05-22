@@ -4,38 +4,64 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="theme-color" content="#00438C" />
-  <link rel="manifest" href="./manifest.webmanifest" />
-  <link rel="stylesheet" href="./popup.css" />
+  <title>Color Converter</title>
+  <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="icon.png">
-  <title>Conversor de Cores</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Conversor de Cores</h1>
-
-    <label for="rgba">RGBA para HEX:</label>
-    <input type="text" id="rgba" placeholder="Ex: rgba(0,67,140,1)" />
-    <div class="output">
-      <input type="text" id="hex" readonly />
-      <button onclick="copiarHEX()">Copiar HEX</button>
-    </div>
-    <div class="preview" id="preview-hex"></div>
-
-    <label for="hexInput">HEX para RGBA:</label>
-    <div class="hex-field">
-      <span>#</span><input type="text" id="hexInput" maxlength="6" />
-    </div>
-    <div class="output">
-      <input type="text" id="rgbaOutput" readonly />
-    </div>
-    <div class="preview" id="preview-rgba"></div>
-
-    <label for="toCMYK">RGB para CMYK:</label>
-    <input type="text" id="toCMYK" placeholder="Ex: rgb(0,67,140)" />
-    <div class="output">
-      <input type="text" id="cmykOutput" readonly />
-    </div>
+  <div class="theme-toggle">
+    <label>
+      <input type="checkbox" id="themeSwitch"> Modo Escuro
+    </label>
   </div>
-  <script src="./popup.js"></script>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="hex">HEX</button>
+    <button class="tab-btn" data-tab="rgba">RGBA</button>
+    <button class="tab-btn" data-tab="cmyk">CMYK</button>
+  </div>
+
+  <div class="tab-content active" id="hex">
+    <h2>HEX para CMYK</h2>
+    <div class="hex-field">
+      <span>#</span>
+      <input type="text" id="hexInput" maxlength="6">
+    </div>
+    <div class="output">
+      <input type="text" id="cmykFromHex" readonly>
+      <button onclick="copyToClipboard('cmykFromHex')">Copiar</button>
+    </div>
+    <div class="preview" id="previewHex"></div>
+  </div>
+
+  <div class="tab-content" id="rgba">
+    <h2>HEX para RGBA</h2>
+    <div class="hex-field">
+      <span>#</span>
+      <input type="text" id="hexInputRGBA" maxlength="6">
+    </div>
+    <div class="output">
+      <input type="text" id="rgbaFromHex" readonly>
+      <button onclick="copyToClipboard('rgbaFromHex')">Copiar</button>
+    </div>
+    <div class="preview" id="previewRGBA"></div>
+  </div>
+
+  <div class="tab-content" id="cmyk">
+    <h2>CMYK para HEX</h2>
+    <div>
+      <label>C</label><input type="number" id="c" min="0" max="100">
+      <label>M</label><input type="number" id="m" min="0" max="100">
+      <label>Y</label><input type="number" id="y" min="0" max="100">
+      <label>K</label><input type="number" id="k" min="0" max="100">
+    </div>
+    <div class="output">
+      <input type="text" id="hexFromCmyk" readonly>
+      <button onclick="copyToClipboard('hexFromCmyk')">Copiar</button>
+    </div>
+    <div class="preview" id="previewCmyk"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

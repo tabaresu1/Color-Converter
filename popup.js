@@ -163,6 +163,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ===== GATO =====
+    const catIcon = document.getElementById('cat-icon');
+    const catWindow = document.getElementById('catWindow');
+    const closeCatWindow = document.getElementById('closeCatWindow');
+    if (catIcon && catWindow && closeCatWindow) {
+        catIcon.addEventListener('dblclick', () => {
+            catWindow.style.display = 'block';
+            catWindow.style.zIndex = 200; // Garante que fique na frente
+        });
+        closeCatWindow.addEventListener('click', () => {
+            catWindow.style.display = 'none';
+        });
+    }
+
     // ===== ABAS =====
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {

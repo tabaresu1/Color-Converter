@@ -1,6 +1,6 @@
 /* Estilo Windows 95 */
 body {
-    font-family: 'MS Sans Serif', Tahoma, sans-serif;
+    font-family: 'W95font', sans-serif;
     background: #008080;
     color: #000;
     margin: 0;
@@ -167,10 +167,10 @@ button:active {
 
 @font-face {
     font-family: 'MS Sans Serif';
-    src: url('assets/fonts/W95font.otf') format('otf');
+    src: url('assets/fonts/W95font.otf') format('opentype');
 }
 @font-face {
     font-family: 'MS Sans Serif';
     font-weight: bold;
-    src: url('assets/fonts/W95font-Bold.otf') format('otf');
+    src: url('assets/fonts/W95font-Bold.otf') format('opentype');
 }

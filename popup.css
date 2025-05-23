@@ -86,6 +86,13 @@ body {
     margin-bottom: -2px;
 }
 
+/* ===== ESCONDE ABA INATIVA ===== */
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+}
 
 /* ===== INPUTS ESTILO W95 ===== */
 input[type="number"], 

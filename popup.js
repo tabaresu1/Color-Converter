@@ -241,3 +241,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Forçar atualização inicial
     updateConversions();
 });
+
+// Adicione ao final do popup.js
+function updateTaskbarClock() {
+    const clock = document.getElementById('taskbarClock');
+    if (clock) {
+        const now = new Date();
+        const h = now.getHours().toString().padStart(2, '0');
+        const m = now.getMinutes().toString().padStart(2, '0');
+        clock.textContent = `${h}:${m}`;
+    }
+}
+setInterval(updateTaskbarClock, 1000);
+updateTaskbarClock();

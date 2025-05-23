@@ -211,17 +211,17 @@ button:active {
     justify-content: center;
     background: #ece9d8;
     border: 2px outset #fff;
-    padding: 2px;
+    padding: 0;
     margin-right: 4px;
-    height: 24px;
-    width: 32px; /* ajuste conforme o tamanho do ícone */
+    height: 26px;
+    width: 40px; /* ou ajuste conforme o ícone */
     cursor: pointer;
 }
 
 .start-img {
-    width: 20px;
-    height: 20px;
-    margin-right: 4px;
+    width: 32px;
+    height: 24px;
+    image-rendering: pixelated;
 }
 
 .taskbar-windows {

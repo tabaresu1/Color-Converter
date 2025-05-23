@@ -378,3 +378,8 @@ button:active {
 .lixeira-window {
     z-index: 200;
 }
+
+#recycleBinWindow {
+    position: absolute;
+    z-index: 100;
+}

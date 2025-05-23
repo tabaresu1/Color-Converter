@@ -166,13 +166,13 @@ button:active {
 }
 
 @font-face {
-    font-family: 'MS Sans Serif';
-    src: url('assets/fonts/W95font.otf') format('opentype');
+    font-family: 'W95font';
+    src: url('assets/fonts/W95font.woff') format('woff');
 }
 @font-face {
-    font-family: 'MS Sans Serif';
+    font-family: 'W95font';
     font-weight: bold;
-    src: url('assets/fonts/W95font-Bold.otf') format('opentype');
+    src: url('assets/fonts/W95font-Bold.woff') format('woff');
 }
 
 /* ===== BARRA DE TÍTULO ===== */

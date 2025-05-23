@@ -272,3 +272,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     setupEventListeners();
 });
+
+// Efeito sonoro ao clicar (opcional)
+function playClickSound() {
+    const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-classic-click-alert-1117.mp3');
+    audio.volume = 0.2;
+    audio.play().catch(e => console.log("Som bloqueado pelo navegador"));
+}
+
+document.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('mousedown', playClickSound);
+});

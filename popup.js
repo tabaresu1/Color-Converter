@@ -4,17 +4,8 @@ document.getElementById('themeBtn').addEventListener('click', () => {
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
 });
 
-// ===== CONTROLE DE ABAS =====
-document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn, .tab-content').forEach(el => {
-            el.classList.remove('active');
-        });
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-        updateAll();
-    });
-});
+// ===== VARIÁVEIS GLOBAIS =====
+let activeConverter = null;
 
 // ===== FUNÇÕES DE CONVERSÃO =====
 function rgbaToHex(r, g, b) {
@@ -57,138 +48,221 @@ function rgbToCmyk(r, g, b) {
     ];
 }
 
-// ===== GESTÃO DE CONVERSORES =====
-let activeConverter = null;
-
+// ===== CONTROLE DE CONVERSORES =====
 function resetCompetingConverters(currentConverter) {
     if (currentConverter === 'rgba-hex') {
-        document.getElementById('cHex').value = 0;
-        document.getElementById('mHex').value = 0;
-        document.getElementById('yHex').value = 0;
-        document.getElementById('kHex').value = 0;
+        // Limpa CMYK→HEX
+        document.getElementById('cHex').value = '';
+        document.getElementById('mHex').value = '';
+        document.getElementById('yHex').value = '';
+        document.getElementById('kHex').value = '';
         document.getElementById('hexCmykResult').value = '';
     } else if (currentConverter === 'cmyk-hex') {
-        document.getElementById('r').value = 0;
-        document.getElementById('g').value = 0;
-        document.getElementById('b').value = 0;
+        // Limpa RGBA→HEX
+        document.getElementById('r').value = '';
+        document.getElementById('g').value = '';
+        document.getElementById('b').value = '';
         document.getElementById('hexResult').value = '';
+    } else if (currentConverter === 'hex-rgba') {
+        // Limpa CMYK→RGBA
+        document.getElementById('cRgba').value = '';
+        document.getElementById('mRgba').value = '';
+        document.getElementById('yRgba').value = '';
+        document.getElementById('kRgba').value = '';
+        document.getElementById('rgbaCmykResult').value = '';
+    } else if (currentConverter === 'cmyk-rgba') {
+        // Limpa HEX→RGBA
+        document.getElementById('hexInput').value = '';
+        document.getElementById('rgbaResult').value = '';
+    } else if (currentConverter === 'rgb-cmyk') {
+        // Limpa HEX→CMYK
+        document.getElementById('hexCmykInput').value = '';
+        document.getElementById('cmykHexResult').value = '';
+    } else if (currentConverter === 'hex-cmyk') {
+        // Limpa RGBA→CMYK
+        document.getElementById('rCmyk').value = '';
+        document.getElementById('gCmyk').value = '';
+        document.getElementById('bCmyk').value = '';
+        document.getElementById('cmykResult').value = '';
     }
     activeConverter = currentConverter;
 }
 
+// ===== ATUALIZAÇÃO DE ABA =====
+function resetOnTabChange() {
+    // Reseta a pré-visualização
+    document.getElementById('colorPreview').style.backgroundColor = '#000000';
+    // Reseta o conversor ativo
+    activeConverter = null;
+    // Limpa todos os resultados (mas mantém os valores de entrada)
+    document.querySelectorAll('.result input').forEach(input => {
+        input.value = '';
+    });
+}
+
 // ===== ATUALIZAÇÃO GERAL =====
 function updateAll() {
-    // RGBA → HEX
-    if (activeConverter !== 'cmyk-hex') {
-        const r = document.getElementById('r').value || 0;
-        const g = document.getElementById('g').value || 0;
-        const b = document.getElementById('b').value || 0;
-        const hex = rgbaToHex(r, g, b);
-        document.getElementById('hexResult').value = hex;
-        updatePreview(hex);
+    const activeTab = document.querySelector('.tab-content.active').id;
+    
+    if (activeTab === 'hex') {
+        // Atualiza apenas o conversor ativo na aba HEX
+        if (activeConverter === 'rgba-hex') {
+            const r = document.getElementById('r').value || 0;
+            const g = document.getElementById('g').value || 0;
+            const b = document.getElementById('b').value || 0;
+            const hex = rgbaToHex(r, g, b);
+            document.getElementById('hexResult').value = hex;
+            updatePreview(hex);
+        } else if (activeConverter === 'cmyk-hex') {
+            const c = document.getElementById('cHex').value || 0;
+            const m = document.getElementById('mHex').value || 0;
+            const y = document.getElementById('yHex').value || 0;
+            const k = document.getElementById('kHex').value || 0;
+            const hex = cmykToHex(c, m, y, k);
+            document.getElementById('hexCmykResult').value = hex;
+            updatePreview(hex);
+        }
     }
-
-    // CMYK → HEX
-    if (activeConverter !== 'rgba-hex') {
-        const c = document.getElementById('cHex').value || 0;
-        const m = document.getElementById('mHex').value || 0;
-        const y = document.getElementById('yHex').value || 0;
-        const k = document.getElementById('kHex').value || 0;
-        const hex = cmykToHex(c, m, y, k);
-        document.getElementById('hexCmykResult').value = hex;
-        updatePreview(hex);
+    else if (activeTab === 'rgba') {
+        // Atualiza apenas o conversor ativo na aba RGBA
+        if (activeConverter === 'hex-rgba') {
+            const hex = document.getElementById('hexInput').value;
+            if (hex && /^#?[0-9A-F]{6}$/i.test(hex.replace('#', ''))) {
+                document.getElementById('rgbaResult').value = hexToRgba(hex);
+                updatePreview(hex);
+            }
+        } else if (activeConverter === 'cmyk-rgba') {
+            const c = document.getElementById('cRgba').value || 0;
+            const m = document.getElementById('mRgba').value || 0;
+            const y = document.getElementById('yRgba').value || 0;
+            const k = document.getElementById('kRgba').value || 0;
+            const hex = cmykToHex(c, m, y, k);
+            document.getElementById('rgbaCmykResult').value = hexToRgba(hex);
+            updatePreview(hex);
+        }
     }
-
-    // HEX → RGBA
-    const hexInput = document.getElementById('hexInput').value;
-    if (hexInput && /^#?[0-9A-F]{6}$/i.test(hexInput.replace('#', ''))) {
-        document.getElementById('rgbaResult').value = hexToRgba(hexInput);
-    }
-
-    // CMYK → RGBA
-    const cRgba = document.getElementById('cRgba').value || 0;
-    const mRgba = document.getElementById('mRgba').value || 0;
-    const yRgba = document.getElementById('yRgba').value || 0;
-    const kRgba = document.getElementById('kRgba').value || 0;
-    document.getElementById('rgbaCmykResult').value = hexToRgba(cmykToHex(cRgba, mRgba, yRgba, kRgba));
-
-    // RGBA → CMYK
-    const rCmyk = document.getElementById('rCmyk').value || 0;
-    const gCmyk = document.getElementById('gCmyk').value || 0;
-    const bCmyk = document.getElementById('bCmyk').value || 0;
-    const [c, m, y, k] = rgbToCmyk(rCmyk, gCmyk, bCmyk);
-    document.getElementById('cmykResult').value = `CMYK(${c}%, ${m}%, ${y}%, ${k}%)`;
-
-    // HEX → CMYK
-    const hexCmykInput = document.getElementById('hexCmykInput').value;
-    if (hexCmykInput && /^#?[0-9A-F]{6}$/i.test(hexCmykInput.replace('#', ''))) {
-        const rgba = hexToRgba(hexCmykInput).match(/\d+/g);
-        const [c, m, y, k] = rgbToCmyk(rgba[0], rgba[1], rgba[2]);
-        document.getElementById('cmykHexResult').value = `CMYK(${c}%, ${m}%, ${y}%, ${k}%)`;
+    else if (activeTab === 'cmyk') {
+        // Atualiza apenas o conversor ativo na aba CMYK
+        if (activeConverter === 'rgb-cmyk') {
+            const r = document.getElementById('rCmyk').value || 0;
+            const g = document.getElementById('gCmyk').value || 0;
+            const b = document.getElementById('bCmyk').value || 0;
+            const [c, m, y, k] = rgbToCmyk(r, g, b);
+            document.getElementById('cmykResult').value = `CMYK(${c}%, ${m}%, ${y}%, ${k}%)`;
+            updatePreview(rgbaToHex(r, g, b));
+        } else if (activeConverter === 'hex-cmyk') {
+            const hex = document.getElementById('hexCmykInput').value;
+            if (hex && /^#?[0-9A-F]{6}$/i.test(hex.replace('#', ''))) {
+                const rgba = hexToRgba(hex).match(/\d+/g);
+                const [c, m, y, k] = rgbToCmyk(rgba[0], rgba[1], rgba[2]);
+                document.getElementById('cmykHexResult').value = `CMYK(${c}%, ${m}%, ${y}%, ${k}%)`;
+                updatePreview(hex);
+            }
+        }
     }
 }
 
 function updatePreview(hex) {
-    if (/^#?[0-9A-F]{6}$/i.test(hex.replace('#', ''))) {
+    if (/^#?[0-9A-F]{6}$/i.test(hex?.replace('#', ''))) {
         const fullHex = hex.startsWith('#') ? hex : `#${hex}`;
         document.getElementById('colorPreview').style.backgroundColor = fullHex;
     }
 }
 
 // ===== EVENT LISTENERS =====
-document.getElementById('r').addEventListener('input', () => {
-    resetCompetingConverters('rgba-hex');
-    updateAll();
-});
-
-document.getElementById('g').addEventListener('input', () => {
-    if (activeConverter === 'rgba-hex') updateAll();
-});
-
-document.getElementById('b').addEventListener('input', () => {
-    if (activeConverter === 'rgba-hex') updateAll();
-});
-
-document.getElementById('cHex').addEventListener('input', () => {
-    resetCompetingConverters('cmyk-hex');
-    updateAll();
-});
-
-document.getElementById('mHex').addEventListener('input', () => {
-    if (activeConverter === 'cmyk-hex') updateAll();
-});
-
-document.getElementById('yHex').addEventListener('input', () => {
-    if (activeConverter === 'cmyk-hex') updateAll();
-});
-
-document.getElementById('kHex').addEventListener('input', () => {
-    if (activeConverter === 'cmyk-hex') updateAll();
-});
-
-document.getElementById('hexInput').addEventListener('input', function() {
-    let value = this.value.replace(/[^0-9A-F]/gi, '').toUpperCase();
-    if (!value.startsWith('#')) value = '#' + value;
-    this.value = value.slice(0, 7);
-    updateAll();
-});
-
-document.getElementById('hexCmykInput').addEventListener('input', function() {
-    let value = this.value.replace(/[^0-9A-F]/gi, '').toUpperCase();
-    if (!value.startsWith('#')) value = '#' + value;
-    this.value = value.slice(0, 7);
-    updateAll();
-});
-
-document.querySelectorAll('.copy-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const target = document.getElementById(btn.dataset.target);
-        target.select();
-        document.execCommand('copy');
-        btn.textContent = '✔ Copiado!';
-        setTimeout(() => btn.textContent = '📋 Copiar', 2000);
+function setupEventListeners() {
+    // Controle de abas
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn, .tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            btn.classList.add('active');
+            document.getElementById(btn.dataset.tab).classList.add('active');
+            resetOnTabChange();
+        });
     });
-});
+
+    // HEX
+    document.getElementById('r').addEventListener('input', () => {
+        resetCompetingConverters('rgba-hex');
+        updateAll();
+    });
+    document.getElementById('g').addEventListener('input', () => {
+        if (activeConverter === 'rgba-hex') updateAll();
+    });
+    document.getElementById('b').addEventListener('input', () => {
+        if (activeConverter === 'rgba-hex') updateAll();
+    });
+
+    document.getElementById('cHex').addEventListener('input', () => {
+        resetCompetingConverters('cmyk-hex');
+        updateAll();
+    });
+    document.getElementById('mHex').addEventListener('input', () => {
+        if (activeConverter === 'cmyk-hex') updateAll();
+    });
+    document.getElementById('yHex').addEventListener('input', () => {
+        if (activeConverter === 'cmyk-hex') updateAll();
+    });
+    document.getElementById('kHex').addEventListener('input', () => {
+        if (activeConverter === 'cmyk-hex') updateAll();
+    });
+
+    // RGBA
+    document.getElementById('hexInput').addEventListener('input', function() {
+        resetCompetingConverters('hex-rgba');
+        let value = this.value.replace(/[^0-9A-F]/gi, '').toUpperCase();
+        if (!value.startsWith('#')) value = '#' + value;
+        this.value = value.slice(0, 7);
+        updateAll();
+    });
+
+    document.getElementById('cRgba').addEventListener('input', () => {
+        resetCompetingConverters('cmyk-rgba');
+        updateAll();
+    });
+    document.getElementById('mRgba').addEventListener('input', () => {
+        if (activeConverter === 'cmyk-rgba') updateAll();
+    });
+    document.getElementById('yRgba').addEventListener('input', () => {
+        if (activeConverter === 'cmyk-rgba') updateAll();
+    });
+    document.getElementById('kRgba').addEventListener('input', () => {
+        if (activeConverter === 'cmyk-rgba') updateAll();
+    });
+
+    // CMYK
+    document.getElementById('rCmyk').addEventListener('input', () => {
+        resetCompetingConverters('rgb-cmyk');
+        updateAll();
+    });
+    document.getElementById('gCmyk').addEventListener('input', () => {
+        if (activeConverter === 'rgb-cmyk') updateAll();
+    });
+    document.getElementById('bCmyk').addEventListener('input', () => {
+        if (activeConverter === 'rgb-cmyk') updateAll();
+    });
+
+    document.getElementById('hexCmykInput').addEventListener('input', function() {
+        resetCompetingConverters('hex-cmyk');
+        let value = this.value.replace(/[^0-9A-F]/gi, '').toUpperCase();
+        if (!value.startsWith('#')) value = '#' + value;
+        this.value = value.slice(0, 7);
+        updateAll();
+    });
+
+    // Botões de copiar
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = document.getElementById(btn.dataset.target);
+            target.select();
+            document.execCommand('copy');
+            btn.textContent = '✔ Copiado!';
+            setTimeout(() => btn.textContent = '📋 Copiar', 2000);
+        });
+    });
+}
 
 // ===== INICIALIZAÇÃO =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -196,7 +270,5 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('dark-mode');
     }
     
-    // Define o conversor padrão
-    activeConverter = 'rgba-hex';
-    updateAll();
+    setupEventListeners();
 });

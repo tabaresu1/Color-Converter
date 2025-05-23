@@ -174,3 +174,81 @@ button:active {
     font-weight: bold;
     src: url('assets/fonts/W95font-Bold.otf') format('opentype');
 }
+
+/* ===== BARRA DE TÍTULO ===== */
+.title-bar {
+    background: #000080;
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid;
+    border-color: #dfdfdf #000 #000 #dfdfdf;
+    margin-bottom: 8px;
+}
+
+.title-text {
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.window-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.win-btn {
+    width: 20px;
+    height: 20px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    font-family: 'W95font';
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.win-btn:active {
+    border-color: #808080 #fff #fff #808080;
+}
+
+.close {
+    color: #000;
+    margin-left: 4px;
+}
+
+/* ===== BORDAS 3D APRIMORADAS ===== */
+.container {
+    border-width: 3px;
+    box-shadow: 2px 2px 0 #000;
+}
+
+.input-group label {
+    border: 2px solid;
+    border-color: #000 #dfdfdf #dfdfdf #000;
+    padding: 4px;
+}
+
+input[type="number"], 
+input[type="text"] {
+    border-width: 3px;
+    border-color: #808080 #fff #fff #808080;
+}
+
+/* ===== BARRA DE STATUS ===== */
+.status-bar {
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    padding: 3px 5px;
+    margin-top: 8px;
+    font-size: 11px;
+}
+
+.status-text {
+    color: #000;
+}

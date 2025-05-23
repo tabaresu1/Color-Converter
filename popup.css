@@ -24,7 +24,7 @@ body {
 
 .container {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     background: #c0c0c0;
     border: 3px solid;
     border-color: #fff #000 #000 #fff; /* Bordas 3D */
@@ -38,17 +38,27 @@ body {
 .title-bar {
     background: #000080;
     color: #fff;
-    padding: 2px 8px;
+    padding: 2px 6px 2px 4px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-weight: bold;
     height: 22px;
+    border-bottom: 1px solid #808080;
+    position: relative;
+}
+
+.window-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    image-rendering: pixelated;
 }
 
 .title-text {
-    font-size: 15px;
-    letter-spacing: 1px;
+    font-size: 13px;
+    font-family: 'W95font', sans-serif;
+    margin-right: auto;
 }
 
 .window-controls {
@@ -56,17 +66,20 @@ body {
     gap: 2px;
 }
 
-.window-controls div {
-    width: 20px;
-    height: 20px;
-    background: #c0c0c0;
-    border: 2px solid;
-    border-color: #fff #808080 #808080 #fff;
+.win-btn {
+    width: 18px;
+    height: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: default;
-    user-select: none;
+    background: #c0c0c0;
+    border: 1px solid #808080;
+    margin-left: 2px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.win-btn:active {
+    border: 1px inset #808080;
 }
 
 /* ===== ABAS ESTILO W95 ===== */
@@ -345,4 +358,8 @@ button:active {
 .menu-bar u {
     text-decoration: underline;
     text-underline-position: under;
+}
+
+.lixeira-window {
+    z-index: 200;
 }

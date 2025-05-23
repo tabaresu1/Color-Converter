@@ -161,26 +161,24 @@ button:active {
 }
 
 .start-btn {
-    background: #c0c0c0;
-    border: 2px solid #fff;
-    border-bottom-color: #808080;
-    border-right-color: #808080;
-    padding: 4px 16px 4px 8px;
-    font-size: 14px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 8px;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    cursor: pointer;
-    margin-left: 8px;
+    height: 100%;
 }
 
 .start-btn:active {
-    border: 2px solid #808080;
-    border-top-color: #fff;
-    border-left-color: #fff;
+    border: none;
 }
 
-.start-btn img {
+.start-img {
     display: block;
+    height: 100%;
+    width: auto;
 }
 
 .taskbar-spacer {

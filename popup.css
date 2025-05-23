@@ -35,7 +35,7 @@ body {
     padding: 3px 4px;
     border: 2px solid;
     border-color: #fff #000 #000 #fff;
-    margin: -8px -8px 8px -8px;
+    margin: 0px -8px 8px -8px;
     display: flex;
     align-items: center;
 }
@@ -86,6 +86,16 @@ body {
     margin-bottom: -2px;
 }
 
+.tab-content {
+    display: none; /* Esconde todas as abas por padrão */
+    padding: 8px;
+    background: #fff;
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+    margin-top: 8px;
+}
+
+
 /* ===== INPUTS ESTILO W95 ===== */
 input[type="number"], 
 input[type="text"] {
@@ -93,7 +103,8 @@ input[type="text"] {
     border: 2px solid;
     border-color: #808080 #fff #fff #808080;
     padding: 4px;
-    width: 80px;
+    width: 70px;
+    margin: 2px;
 }
 
 /* ===== BOTÕES ESTILO W95 ===== */
@@ -115,8 +126,13 @@ button:active {
     height: 60px;
     border: 2px solid;
     border-color: #808080 #fff #fff #808080;
+    border-width: 3px;
     background: #fff;
     margin-top: 12px;
+}
+
+.converter {
+    margin-bottom: 16px;
 }
 
 /* ===== BARRA DE STATUS ===== */

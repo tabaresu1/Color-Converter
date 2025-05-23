@@ -150,17 +150,23 @@ function handleCmykTab() {
 // ===== EVENT LISTENERS =====
 function setupEventListeners() {
     // Controle de abas
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.tab-btn, .tab-content').forEach(el => {
-                el.classList.remove('active');
-            });
-            btn.classList.add('active');
-            document.getElementById(btn.dataset.tab).classList.add('active');
-            activeConverter = null;
-            updatePreview('#FFFFFF');
+// Substitua o evento de clique das abas por:
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove 'active' de todos os botões e abas
+        document.querySelectorAll('.tab-btn, .tab-content').forEach(el => {
+            el.classList.remove('active');
         });
+        
+        // Ativa a aba/botão clicado
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+        
+        // Reseta o conversor ativo
+        activeConverter = null;
+        updatePreview('#FFFFFF');
     });
+});
 
     // Inputs da aba HEX
     ['r', 'g', 'b'].forEach(id => {

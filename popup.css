@@ -195,3 +195,38 @@ input[type="text"] {
 #colorPreview {
     transition: background-color 0.3s;
 }
+
+/* Adicione ao seu CSS existente */
+input[type="number"] {
+    -moz-appearance: textfield;
+    width: 60px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#colorPreview {
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+/* Garante que os inputs HEX mantenham o # */
+input[type="text"][id*="hex"] {
+    padding-left: 20px;
+    position: relative;
+}
+
+input[type="text"][id*="hex"]::before {
+    content: "#";
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}

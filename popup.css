@@ -1,12 +1,17 @@
 /* ===== FONTE PERSONALIZADA ===== */
 @font-face {
-    font-family: 'SuaFonte';
-    src: url('asstes/fonts/w95font.woff') format('woff');
+    font-family: 'W95font';
+    src: url('assets/fonts/W95font.otf') format('opentype');
+}
+@font-face {
+    font-family: 'W95font';
+    font-weight: bold;
+    src: url('assets/fonts/W95font-Bold.otf') format('opentype');
 }
 
 /* ===== ESTILO W95 COM SUA FONTE ===== */
 body {
-    font-family: 'SuaFonte', sans-serif;
+    font-family: 'W95font', sans-serif;
     background: #008080;
     margin: 0;
     padding: 20px;

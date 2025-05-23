@@ -228,6 +228,36 @@ button:active {
     border-bottom: 2px solid #808080;
 }
 
+.window-content .icon-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 32px;
+    padding: 16px 0;
+}
+
+.file-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    margin-bottom: 8px;
+    user-select: none;
+}
+
+.file-icon img {
+    width: 40px;
+    height: 40px;
+    image-rendering: pixelated;
+}
+
+.file-icon span {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #000;
+    text-align: center;
+    word-break: break-word;
+}
+
 /* ===== AREA DE TRABALHO ===== */
 .desktop {
     position: fixed;

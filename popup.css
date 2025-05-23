@@ -242,7 +242,7 @@ button:active {
     width: 72px;
     text-align: center;
     pointer-events: auto;
-    cursor: pointer;
+    cursor: default;
     user-select: none;
 }
 

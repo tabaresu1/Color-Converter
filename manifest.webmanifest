@@ -1,7 +1,7 @@
 {
   "name": "Conversor de Cores",
-  "short_name": "Conversor",
-  "start_url": "./index.html",
+  "short_name": "ColorConv",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#00438C",

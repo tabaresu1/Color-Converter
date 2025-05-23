@@ -22,9 +22,9 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 // ===== FUNÇÕES DE CONVERSÃO =====
 // RGBA → HEX
 function rgbaToHex(r, g, b, a = 1) {
-    r = Math.max(0, Math.min(255, parseInt(r) || 0));
-    g = Math.max(0, Math.min(255, parseInt(g) || 0));
-    b = Math.max(0, Math.min(255, parseInt(b) || 0));
+    r = Math.max(0, Math.min(255, parseInt(r) || 0);
+    g = Math.max(0, Math.min(255, parseInt(g) || 0);
+    b = Math.max(0, Math.min(255, parseInt(b) || 0);
     a = Math.max(0, Math.min(1, parseFloat(a) || 1));
     
     const toHex = n => n.toString(16).padStart(2, '0').toUpperCase();
@@ -44,11 +44,11 @@ function cmykToHex(c, m, y, k) {
     return rgbaToHex(r, g, b);
 }
 
-// HEX → RGBA (Corrigido)
+// HEX → RGBA
 function hexToRgba(hex) {
     hex = hex.replace(/^#/, '').trim();
+    if (!/^([0-9A-F]{3}){1,2}$/i.test(hex) && !/^([0-9A-F]{4}){1,2}$/i.test(hex)) return 'rgba(0, 0, 0, 1)';
     
-    // Expande formatos curtos (#RGB → #RRGGBB)
     if (hex.length === 3 || hex.length === 4) {
         hex = hex.split('').map(c => c + c).join('');
     }
@@ -68,7 +68,7 @@ function rgbToCmyk(r, g, b) {
     b = parseInt(b) / 255;
     
     const k = 1 - Math.max(r, g, b);
-    if (k === 1) return [0, 0, 0, 100]; // Preto puro
+    if (k === 1) return [0, 0, 0, 100];
     
     const c = ((1 - r - k) / (1 - k)) * 100;
     const m = ((1 - g - k) / (1 - k)) * 100;
@@ -82,34 +82,88 @@ function rgbToCmyk(r, g, b) {
     ];
 }
 
+// HEX → CMYK
+function hexToCmyk(hex) {
+    const rgba = hexToRgba(hex).match(/\d+/g);
+    return rgbToCmyk(rgba[0], rgba[1], rgba[2]);
+}
+
+// CMYK → RGBA
+function cmykToRgba(c, m, y, k) {
+    const hex = cmykToHex(c, m, y, k);
+    return hexToRgba(hex);
+}
+
+// ===== CONTROLE DE CAMPOS =====
+function resetOtherFields(currentConverter) {
+    const converters = {
+        'hex': () => {
+            document.getElementById('hexInput').value = '';
+            document.getElementById('hexCmykInput').value = '';
+        },
+        'rgba': () => {
+            document.getElementById('r').value = 0;
+            document.getElementById('g').value = 0;
+            document.getElementById('b').value = 0;
+            document.getElementById('a').value = 1;
+        },
+        'cmyk': () => {
+            document.getElementById('cHex').value = 0;
+            document.getElementById('mHex').value = 0;
+            document.getElementById('yHex').value = 0;
+            document.getElementById('kHex').value = 0;
+        }
+    };
+    
+    if (converters[currentConverter]) converters[currentConverter]();
+}
+
+// Formatação automática do HEX
+function formatHexInput(input) {
+    let value = input.value.replace(/[^0-9A-F]/gi, '').toUpperCase();
+    if (!value.startsWith('#')) value = '#' + value;
+    input.value = value.slice(0, 9);
+}
+
 // ===== ATUALIZAÇÃO GERAL =====
 function updateAll() {
-    // RGBA → HEX
+    // ABA HEX
     const r = document.getElementById('r').value || 0;
     const g = document.getElementById('g').value || 0;
     const b = document.getElementById('b').value || 0;
     const a = document.getElementById('a').value || 1;
     document.getElementById('hexResult').value = rgbaToHex(r, g, b, a);
 
-    // CMYK → HEX
     const cHex = document.getElementById('cHex').value || 0;
     const mHex = document.getElementById('mHex').value || 0;
     const yHex = document.getElementById('yHex').value || 0;
     const kHex = document.getElementById('kHex').value || 0;
     document.getElementById('hexCmykResult').value = cmykToHex(cHex, mHex, yHex, kHex);
 
-    // HEX → RGBA
+    // ABA RGBA
     const hexInput = document.getElementById('hexInput').value;
-    if (hexInput) {
+    if (hexInput && /^#[0-9A-F]{6}$/i.test(hexInput)) {
         document.getElementById('rgbaResult').value = hexToRgba(hexInput);
     }
 
-    // RGB → CMYK
+    const cRgba = document.getElementById('cRgba').value || 0;
+    const mRgba = document.getElementById('mRgba').value || 0;
+    const yRgba = document.getElementById('yRgba').value || 0;
+    const kRgba = document.getElementById('kRgba').value || 0;
+    document.getElementById('rgbaCmykResult').value = cmykToRgba(cRgba, mRgba, yRgba, kRgba);
+
+    // ABA CMYK
     const rCmyk = document.getElementById('rCmyk').value || 0;
     const gCmyk = document.getElementById('gCmyk').value || 0;
     const bCmyk = document.getElementById('bCmyk').value || 0;
     const [c, m, y, k] = rgbToCmyk(rCmyk, gCmyk, bCmyk);
     document.getElementById('cmykResult').value = `CMYK(${c}%, ${m}%, ${y}%, ${k}%)`;
+
+    const hexCmykInput = document.getElementById('hexCmykInput').value;
+    if (hexCmykInput && /^#[0-9A-F]{6}$/i.test(hexCmykInput)) {
+        const [c, m, y, k] = hexToCmyk(hexCmykInput);
+        document.getElementById('cmykHexResult').value = `CMYK(${c}%, ${m}%, ${y}%, ${k}%)`;
+    }
 
     // Pré-visualização
     const activeHex = document.querySelector('.tab-content.active input[type="text"]')?.value;
@@ -118,9 +172,20 @@ function updateAll() {
     }
 }
 
-// ===== EVENTOS =====
-document.querySelectorAll('input').forEach(input => {
-    input.addEventListener('input', updateAll);
+// ===== EVENT LISTENERS =====
+document.querySelectorAll('input[type="number"]').forEach(input => {
+    input.addEventListener('input', (e) => {
+        resetOtherFields(e.target.closest('.tab-content').id);
+        updateAll();
+    });
+});
+
+document.querySelectorAll('input[type="text"]').forEach(input => {
+    input.addEventListener('input', (e) => {
+        formatHexInput(e.target);
+        resetOtherFields(e.target.closest('.tab-content').id);
+        updateAll();
+    });
 });
 
 document.querySelectorAll('.copy-btn').forEach(btn => {
@@ -135,14 +200,12 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
 
 // ===== INICIALIZAÇÃO =====
 document.addEventListener('DOMContentLoaded', () => {
-    // Carrega tema salvo
+    // Tema dark
     if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
         themeBtn.textContent = '🌞 Tema Claro';
     }
-
-    // Dispara eventos para processar valores iniciais
-    document.querySelectorAll('input').forEach(input => {
-        input.dispatchEvent(new Event('input'));
-    });
+    
+    // Dispara eventos iniciais
+    updateAll();
 });

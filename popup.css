@@ -159,3 +159,39 @@ input[type="number"]:focus, input[type="text"]:focus {
 input:invalid {
     border-color: #ff4444 !important;
 }
+
+/* Adicione ao final do arquivo existente */
+
+/* Remove setas de inputs number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    padding: 8px;
+    width: 60px;
+}
+
+/* Estilo para inputs HEX */
+input[type="text"] {
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Garante que o # não seja removido */
+#hexInput::before,
+#hexCmykInput::before {
+    content: "#";
+    position: absolute;
+    left: 10px;
+    color: var(--text-color);
+}
+
+/* Melhoria na pré-visualização */
+#colorPreview {
+    transition: background-color 0.3s;
+}

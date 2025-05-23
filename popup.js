@@ -251,6 +251,41 @@ document.addEventListener('DOMContentLoaded', () => {
     updateConversions();
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    // ===== LIXEIRA =====
+    const recycleBin = document.getElementById('recycle-bin');
+    const recycleBinWindow = document.getElementById('recycleBinWindow');
+    const closeRecycleBin = document.getElementById('closeRecycleBin');
+    if (recycleBin && recycleBinWindow && closeRecycleBin) {
+        recycleBin.addEventListener('dblclick', () => {
+            recycleBinWindow.style.display = 'block';
+        });
+        closeRecycleBin.addEventListener('click', () => {
+            recycleBinWindow.style.display = 'none';
+        });
+    }
+
+    // ===== ABAS =====
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+            btn.classList.add('active');
+            const tabId = btn.getAttribute('data-tab');
+            if (tabId) {
+                document.getElementById(tabId).classList.add('active');
+            }
+        });
+    });
+
+    // ===== CONVERSORES =====
+    // Coloque aqui suas funções de conversão e eventos dos inputs
+    // Exemplo:
+    // document.getElementById('input-r').addEventListener('input', function() { ... });
+
+    // ...restante do seu código JS...
+});
+
 // Adicione ao final do popup.js
 function updateTaskbarClock() {
     const clock = document.getElementById('taskbarClock');

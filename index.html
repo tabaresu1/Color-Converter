@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversor de Cores</title>
     <link rel="stylesheet" href="popup.css">
-    <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
     <div class="theme-toggle">
@@ -29,7 +28,6 @@
                     <label>R: <input type="number" id="r" min="0" max="255" value="0"></label>
                     <label>G: <input type="number" id="g" min="0" max="255" value="0"></label>
                     <label>B: <input type="number" id="b" min="0" max="255" value="0"></label>
-                    <label>A: <input type="number" id="a" min="0" max="1" step="0.01" value="1"></label>
                 </div>
                 <div class="result">
                     <input type="text" id="hexResult" readonly>
@@ -50,11 +48,6 @@
                     <button class="copy-btn" data-target="hexCmykResult">📋 Copiar</button>
                 </div>
             </div>
-
-            <div class="preview">
-                <h3>Visualização da Cor</h3>
-                <div id="colorPreview"></div>
-            </div>
         </div>
 
         <!-- Aba RGBA -->
@@ -62,7 +55,7 @@
             <div class="converter">
                 <h2>HEX → RGBA</h2>
                 <div class="input-group">
-                    <label>HEX: <input type="text" id="hexInput" placeholder="#FFFFFF" maxlength="9"></label>
+                    <label>HEX: <input type="text" id="hexInput" placeholder="#FFFFFF" maxlength="7"></label>
                 </div>
                 <div class="result">
                     <input type="text" id="rgbaResult" readonly>
@@ -93,7 +86,6 @@
                     <label>R: <input type="number" id="rCmyk" min="0" max="255" value="0"></label>
                     <label>G: <input type="number" id="gCmyk" min="0" max="255" value="0"></label>
                     <label>B: <input type="number" id="bCmyk" min="0" max="255" value="0"></label>
-                    <label>A: <input type="number" id="aCmyk" min="0" max="1" step="0.01" value="1"></label>
                 </div>
                 <div class="result">
                     <input type="text" id="cmykResult" readonly>
@@ -104,13 +96,19 @@
             <div class="converter">
                 <h2>HEX → CMYK</h2>
                 <div class="input-group">
-                    <label>HEX: <input type="text" id="hexCmykInput" placeholder="#FFFFFF" maxlength="9"></label>
+                    <label>HEX: <input type="text" id="hexCmykInput" placeholder="#FFFFFF" maxlength="7"></label>
                 </div>
                 <div class="result">
                     <input type="text" id="cmykHexResult" readonly>
                     <button class="copy-btn" data-target="cmykHexResult">📋 Copiar</button>
                 </div>
             </div>
+        </div>
+
+        <!-- Pré-visualização -->
+        <div class="preview">
+            <h3>Visualização da Cor</h3>
+            <div id="colorPreview"></div>
         </div>
     </div>
     <script src="popup.js"></script>

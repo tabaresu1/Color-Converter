@@ -18,10 +18,6 @@
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-    <div class="theme-toggle">
-        <button id="themeBtn">🌓 Alternar Tema</button>
-    </div>
-
     <div class="container">
 	<div class="title-bar">
     		<div class="title-text">🎨 Conversor de Cores</div>
@@ -151,6 +147,28 @@
   </button>
   <div class="taskbar-spacer"></div>
   <div class="taskbar-clock" id="taskbarClock">12:00</div>
+</div>
+<div class="desktop">
+  <div class="desktop-icon" id="recycle-bin">
+    <img src="assets/icons/recycle-bin.png" alt="Lixeira">
+    <span>Lixeira</span>
+  </div>
+</div>
+    <div class="window" id="recycleBinWindow" style="display:none;">
+  <div class="title-bar">
+    <div class="title-text">Lixeira</div>
+    <div class="window-controls">
+      <div class="win-btn close" id="closeRecycleBin">
+        <svg width="14" height="14" viewBox="0 0 14 14">
+          <line x1="4" y1="4" x2="10" y2="10" stroke="#000" stroke-width="2"/>
+          <line x1="10" y1="4" x2="4" y2="10" stroke="#000" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div style="padding: 16px;">
+    <p>A Lixeira está vazia.</p>
+  </div>
 </div>
     <script src="popup.js"></script>
 </body>

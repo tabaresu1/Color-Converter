@@ -196,3 +196,18 @@ button:active {
     min-width: 48px;
     text-align: center;
 }
+
+/* ===== JANELA ESTILO W95 ===== */
+.window {
+    position: absolute;
+    top: 120px;
+    left: 120px;
+    width: 300px;
+    background: #c0c0c0;
+    border: 3px solid #fff;
+    border-bottom-color: #808080;
+    border-right-color: #808080;
+    box-shadow: 4px 4px 0 #808080;
+    z-index: 10;
+    font-family: 'W95font', sans-serif;
+}

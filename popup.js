@@ -1,8 +1,10 @@
 // ===== TEMA ESCURO =====
+/*
 document.getElementById('themeBtn').addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
 });
+*/
 
 // ===== VARIÁVEIS GLOBAIS =====
 let activeConverter = null;
@@ -225,6 +227,13 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.innerHTML = '✔ Copiado!';
             setTimeout(() => btn.innerHTML = originalText, 2000);
         });
+    });
+
+    document.getElementById('recycle-bin').addEventListener('dblclick', () => {
+        document.getElementById('recycleBinWindow').style.display = 'block';
+    });
+    document.getElementById('closeRecycleBin').addEventListener('click', () => {
+        document.getElementById('recycleBinWindow').style.display = 'none';
     });
 }
 

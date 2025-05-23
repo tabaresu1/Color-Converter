@@ -18,7 +18,22 @@
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-    <div class="container">
+  <div class="desktop">
+    <div class="desktop-icon" style="top: 24px;">
+      <img src="assets/icons/my-computer.png" alt="Meu Computador">
+      <span>Meu Computador</span>
+    </div>
+    <div class="desktop-icon" id="recycle-bin" style="top: 114px;">
+      <img src="assets/icons/recycle-bin.png" alt="Lixeira">
+      <span>Lixeira</span>
+    </div>
+    <div class="desktop-icon" style="top: 204px;">
+      <img src="assets/icons/mail.png" alt="Mail">
+      <span>Mail</span>
+    </div>
+  </div>
+
+  <div class="container">
 	<div class="title-bar">
     		<div class="title-text">🎨 Conversor de Cores</div>
     			<div class="window-controls">
@@ -148,21 +163,7 @@
   <div class="taskbar-spacer"></div>
   <div class="taskbar-clock" id="taskbarClock">12:00</div>
 </div>
-<div class="desktop">
-  <div class="desktop-icon" style="top: 24px;">
-    <img src="assets/icons/my-computer.png" alt="Meu Computador">
-    <span>Meu Computador</span>
-  </div>
-  <div class="desktop-icon" id="recycle-bin" style="top: 114px;">
-    <img src="assets/icons/recycle-bin.png" alt="Lixeira">
-    <span>Lixeira</span>
-  </div>
-  <div class="desktop-icon" style="top: 204px;">
-    <img src="assets/icons/mail.png" alt="Mail">
-    <span>Mail</span>
-  </div>
-</div>
-    <div class="window" id="recycleBinWindow" style="display:none;">
+<div class="window" id="recycleBinWindow" style="display:none;">
   <div class="title-bar">
     <div class="title-text">Lixeira</div>
     <div class="window-controls">

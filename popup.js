@@ -157,9 +157,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (recycleBin && recycleBinWindow && closeRecycleBin) {
         recycleBin.addEventListener('dblclick', () => {
             recycleBinWindow.style.display = 'block';
+            recycleBinWindow.style.zIndex = 200;
+            addTaskbarButton('recycleBinWindow', 'assets/icons/recycle-bin-2.png', 'Lixeira');
         });
         closeRecycleBin.addEventListener('click', () => {
             recycleBinWindow.style.display = 'none';
+            removeTaskbarButton('recycleBinWindow');
         });
     }
 
@@ -170,10 +173,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (catIcon && catWindow && closeCatWindow) {
         catIcon.addEventListener('dblclick', () => {
             catWindow.style.display = 'block';
-            catWindow.style.zIndex = 200; // Garante que fique na frente
+            catWindow.style.zIndex = 200;
+            addTaskbarButton('catWindow', 'assets/icons/cat.ico', 'Sobre Mim');
         });
         closeCatWindow.addEventListener('click', () => {
             catWindow.style.display = 'none';
+            removeTaskbarButton('catWindow');
         });
     }
 
@@ -260,3 +265,24 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(updateTaskbarClock, 1000);
     updateTaskbarClock();
 });
+
+function addTaskbarButton(windowId, iconSrc, label) {
+    const taskbar = document.getElementById('taskbarWindows');
+    if (document.getElementById('taskbar-btn-' + windowId)) return; // já existe
+
+    const btn = document.createElement('button');
+    btn.className = 'taskbar-window-btn active';
+    btn.id = 'taskbar-btn-' + windowId;
+    btn.innerHTML = `<img src="${iconSrc}" style="width:16px;height:16px;margin-right:4px;">${label}`;
+    btn.onclick = () => {
+        const win = document.getElementById(windowId);
+        if (win.style.display === 'none') win.style.display = 'block';
+        win.style.zIndex = 200;
+    };
+    taskbar.appendChild(btn);
+}
+
+function removeTaskbarButton(windowId) {
+    const btn = document.getElementById('taskbar-btn-' + windowId);
+    if (btn) btn.remove();
+}

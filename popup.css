@@ -179,6 +179,10 @@ button:active {
     border-left-color: #fff;
 }
 
+.start-btn img {
+    display: block;
+}
+
 .taskbar-spacer {
     flex: 1;
 }

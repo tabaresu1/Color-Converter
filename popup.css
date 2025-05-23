@@ -86,15 +86,6 @@ body {
     margin-bottom: -2px;
 }
 
-.tab-content {
-    display: none; /* Esconde todas as abas por padrão */
-    padding: 8px;
-    background: #fff;
-    border: 2px solid;
-    border-color: #808080 #fff #fff #808080;
-    margin-top: 8px;
-}
-
 
 /* ===== INPUTS ESTILO W95 ===== */
 input[type="number"], 

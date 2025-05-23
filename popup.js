@@ -22,7 +22,6 @@ function cmykToHex(c, m, y, k) {
     m = Math.max(0, Math.min(100, parseInt(m) || 0)) / 100;
     y = Math.max(0, Math.min(100, parseInt(y) || 0)) / 100;
     k = Math.max(0, Math.min(100, parseInt(k) || 0)) / 100;
-    
     const r = Math.round(255 * (1 - c) * (1 - k));
     const g = Math.round(255 * (1 - m) * (1 - k));
     const b = Math.round(255 * (1 - y) * (1 - k));
@@ -65,7 +64,7 @@ function resetCompetingConverters(currentConverter) {
         const element = document.getElementById(id);
         if (element) element.value = '';
     });
-    
+
     activeConverter = currentConverter;
 }
 
@@ -82,7 +81,7 @@ function updatePreview(hex) {
 // ===== ATUALIZAÇÃO GERAL =====
 function updateConversions() {
     const activeTab = document.querySelector('.tab-content.active').id;
-    
+
     if (activeTab === 'hex') {
         handleHexTab();
     } else if (activeTab === 'rgba') {
@@ -149,108 +148,7 @@ function handleCmykTab() {
     }
 }
 
-// ===== EVENT LISTENERS =====
-function setupEventListeners() {
-    // Controle de abas
-// Substitua o evento de clique das abas por:
-document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remove 'active' de todos os botões e abas
-        document.querySelectorAll('.tab-btn, .tab-content').forEach(el => {
-            el.classList.remove('active');
-        });
-        
-        // Ativa a aba/botão clicado
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-        
-        // Reseta o conversor ativo
-        activeConverter = null;
-        updatePreview('#FFFFFF');
-    });
-});
-
-    // Inputs da aba HEX
-    ['r', 'g', 'b'].forEach(id => {
-        document.getElementById(id).addEventListener('input', () => {
-            resetCompetingConverters('rgba-hex');
-            updateConversions();
-        });
-    });
-
-    ['cHex', 'mHex', 'yHex', 'kHex'].forEach(id => {
-        document.getElementById(id).addEventListener('input', () => {
-            resetCompetingConverters('cmyk-hex');
-            updateConversions();
-        });
-    });
-
-    // Inputs da aba RGBA
-    document.getElementById('hexInput').addEventListener('input', function() {
-        resetCompetingConverters('hex-rgba');
-        this.value = this.value.replace(/[^0-9A-F]/gi, '').toUpperCase().slice(0, 6);
-        if (this.value && !this.value.startsWith('#')) this.value = '#' + this.value;
-        updateConversions();
-    });
-
-    ['cRgba', 'mRgba', 'yRgba', 'kRgba'].forEach(id => {
-        document.getElementById(id).addEventListener('input', () => {
-            resetCompetingConverters('cmyk-rgba');
-            updateConversions();
-        });
-    });
-
-    // Inputs da aba CMYK
-    ['rCmyk', 'gCmyk', 'bCmyk'].forEach(id => {
-        document.getElementById(id).addEventListener('input', () => {
-            resetCompetingConverters('rgb-cmyk');
-            updateConversions();
-        });
-    });
-
-    document.getElementById('hexCmykInput').addEventListener('input', function() {
-        resetCompetingConverters('hex-cmyk');
-        this.value = this.value.replace(/[^0-9A-F]/gi, '').toUpperCase().slice(0, 6);
-        if (this.value && !this.value.startsWith('#')) this.value = '#' + this.value;
-        updateConversions();
-    });
-
-    // Botões de copiar
-    document.querySelectorAll('.copy-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const target = document.getElementById(btn.dataset.target);
-            target.select();
-            document.execCommand('copy');
-            
-            // Feedback visual
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '✔ Copiado!';
-            setTimeout(() => btn.innerHTML = originalText, 2000);
-        });
-    });
-
-    document.getElementById('recycle-bin').addEventListener('dblclick', () => {
-        document.getElementById('recycleBinWindow').style.display = 'block';
-    });
-    document.getElementById('closeRecycleBin').addEventListener('click', () => {
-        document.getElementById('recycleBinWindow').style.display = 'none';
-    });
-}
-
 // ===== INICIALIZAÇÃO =====
-document.addEventListener('DOMContentLoaded', () => {
-    // Carregar tema salvo
-    if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-    }
-    
-    // Iniciar listeners
-    setupEventListeners();
-    
-    // Forçar atualização inicial
-    updateConversions();
-});
-
 document.addEventListener('DOMContentLoaded', function() {
     // ===== LIXEIRA =====
     const recycleBin = document.getElementById('recycle-bin');
@@ -267,34 +165,84 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ===== ABAS =====
     document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn, .tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
             btn.classList.add('active');
-            const tabId = btn.getAttribute('data-tab');
-            if (tabId) {
-                document.getElementById(tabId).classList.add('active');
-            }
+            document.getElementById(btn.dataset.tab).classList.add('active');
+            activeConverter = null;
+            updatePreview('#FFFFFF');
         });
     });
 
-    // ===== CONVERSORES =====
-    // Coloque aqui suas funções de conversão e eventos dos inputs
-    // Exemplo:
-    // document.getElementById('input-r').addEventListener('input', function() { ... });
+    // ===== INPUTS DA ABA HEX =====
+    ['r', 'g', 'b'].forEach(id => {
+        document.getElementById(id).addEventListener('input', () => {
+            resetCompetingConverters('rgba-hex');
+            updateConversions();
+        });
+    });
+    ['cHex', 'mHex', 'yHex', 'kHex'].forEach(id => {
+        document.getElementById(id).addEventListener('input', () => {
+            resetCompetingConverters('cmyk-hex');
+            updateConversions();
+        });
+    });
 
-    // ...restante do seu código JS...
-});
+    // ===== INPUTS DA ABA RGBA =====
+    document.getElementById('hexInput').addEventListener('input', function() {
+        resetCompetingConverters('hex-rgba');
+        this.value = this.value.replace(/[^0-9A-F]/gi, '').toUpperCase().slice(0, 6);
+        if (this.value && !this.value.startsWith('#')) this.value = '#' + this.value;
+        updateConversions();
+    });
+    ['cRgba', 'mRgba', 'yRgba', 'kRgba'].forEach(id => {
+        document.getElementById(id).addEventListener('input', () => {
+            resetCompetingConverters('cmyk-rgba');
+            updateConversions();
+        });
+    });
 
-// Adicione ao final do popup.js
-function updateTaskbarClock() {
-    const clock = document.getElementById('taskbarClock');
-    if (clock) {
-        const now = new Date();
-        const h = now.getHours().toString().padStart(2, '0');
-        const m = now.getMinutes().toString().padStart(2, '0');
-        clock.textContent = `${h}:${m}`;
+    // ===== INPUTS DA ABA CMYK =====
+    ['rCmyk', 'gCmyk', 'bCmyk'].forEach(id => {
+        document.getElementById(id).addEventListener('input', () => {
+            resetCompetingConverters('rgb-cmyk');
+            updateConversions();
+        });
+    });
+    document.getElementById('hexCmykInput').addEventListener('input', function() {
+        resetCompetingConverters('hex-cmyk');
+        this.value = this.value.replace(/[^0-9A-F]/gi, '').toUpperCase().slice(0, 6);
+        if (this.value && !this.value.startsWith('#')) this.value = '#' + this.value;
+        updateConversions();
+    });
+
+    // ===== BOTÕES DE COPIAR =====
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = document.getElementById(btn.dataset.target);
+            target.select();
+            document.execCommand('copy');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✔ Copiado!';
+            setTimeout(() => btn.innerHTML = originalText, 2000);
+        });
+    });
+
+    // ===== ATUALIZAÇÃO INICIAL =====
+    updateConversions();
+
+    // ===== RELÓGIO DA TASKBAR =====
+    function updateTaskbarClock() {
+        const clock = document.getElementById('taskbarClock');
+        if (clock) {
+            const now = new Date();
+            const h = now.getHours().toString().padStart(2, '0');
+            const m = now.getMinutes().toString().padStart(2, '0');
+            clock.textContent = `${h}:${m}`;
+        }
     }
-}
-setInterval(updateTaskbarClock, 1000);
-updateTaskbarClock();
+    setInterval(updateTaskbarClock, 1000);
+    updateTaskbarClock();
+});

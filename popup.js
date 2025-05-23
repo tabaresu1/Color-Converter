@@ -235,18 +235,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Forçar atualização inicial
     updateConversions();
 });
-
-// Controles da janela
-document.querySelector('.minimize').addEventListener('click', () => {
-    alert('[SISTEMA] Minimizar não implementado!');
-});
-
-document.querySelector('.maximize').addEventListener('click', () => {
-    alert('[SISTEMA] Maximizar não implementado!');
-});
-
-document.querySelector('.close').addEventListener('click', () => {
-    if (confirm('Deseja realmente fechar o aplicativo?')) {
-        document.querySelector('.container').style.display = 'none';
-    }
-});

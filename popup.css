@@ -206,14 +206,18 @@ button:active {
     border-color: #fff #808080 #808080 #fff;
     font-family: 'W95font';
     font-size: 12px;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    /* Remove interatividade */
+    cursor: default;
+    user-select: none;
 }
 
-.win-btn:active {
-    border-color: #808080 #fff #fff #808080;
+/* Remove efeitos de hover/active */
+.win-btn:hover, .win-btn:active {
+    background: #c0c0c0;
+    border-color: #fff #808080 #808080 #fff;
 }
 
 .close {
@@ -223,7 +227,7 @@ button:active {
 
 /* ===== BORDAS 3D APRIMORADAS ===== */
 .container {
-    border-width: 3px;
+    border-width: 1px;
     box-shadow: 2px 2px 0 #000;
 }
 

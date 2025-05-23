@@ -44,6 +44,7 @@ body {
     justify-content: space-between;
     font-weight: bold;
     height: 24px;
+    font-family: 'W95font', sans-serif;
 }
 
 .title-text {
@@ -147,6 +148,7 @@ button:active {
     height: 20px;
     display: flex;
     align-items: center;
+    font-family: 'W95font', sans-serif;
 }
 
 /* ===== BARRA DE TAREFAS ESTILO W95 ===== */
@@ -228,6 +230,16 @@ button:active {
     border-bottom: 2px solid #808080;
 }
 
+.window-content95 {
+    background: #fff;
+    min-height: 120px;
+    padding: 8px 0 8px 8px;
+    border-left: 2px solid #fff;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+}
+
 .window-content .icon-area {
     display: flex;
     flex-wrap: wrap;
@@ -235,27 +247,35 @@ button:active {
     padding: 16px 0;
 }
 
+/* ===== LISTA DE ÍCONES ALINHADOS À ESQUERDA ===== */
+.icon-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+}
+
 .file-icon {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80px;
-    margin-bottom: 8px;
+    width: 64px;
     user-select: none;
 }
 
 .file-icon img {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     image-rendering: pixelated;
 }
 
 .file-icon span {
-    margin-top: 4px;
+    margin-top: 2px;
     font-size: 12px;
     color: #000;
     text-align: center;
     word-break: break-word;
+    font-family: 'W95font', sans-serif;
 }
 
 /* ===== AREA DE TRABALHO ===== */

@@ -1,104 +1,154 @@
-:root {
-    --primary-color: #00438C;
-    --background: #ffffff;
-    --text-color: #333333;
-    --input-bg: #f8f8f8;
-    --border-color: #dddddd;
-}
-
-body.dark-mode {
-    --primary-color: #66A9FF;
-    --background: #1a1a1a;
-    --text-color: #e0e0e0;
-    --input-bg: #2d2d2d;
-    --border-color: #444444;
-}
-
+/* Estilo Windows 95 */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: var(--background);
-    color: var(--text-color);
+    font-family: 'MS Sans Serif', Tahoma, sans-serif;
+    background: #008080;
+    color: #000;
     margin: 0;
-    padding: 20px;
-    transition: background 0.3s, color 0.3s;
+    padding: 16px;
+    font-size: 12px;
 }
 
 .container {
-    max-width: 600px;
+    width: 100%;
+    max-width: 500px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #dfdfdf #000 #000 #dfdfdf;
+    box-shadow: 1px 1px 0 #808080;
+    padding: 8px;
     margin: 0 auto;
-    background: var(--input-bg);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    background: #000080;
+    color: #fff;
+    padding: 6px 8px;
+    font-size: 14px;
+    margin: -8px -8px 8px -8px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 .tabs {
     display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
+    border-bottom: 2px solid #000;
+    margin-bottom: 12px;
 }
 
 .tab-btn {
-    padding: 10px 20px;
-    background: var(--input-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
+    padding: 3px 12px;
+    background: #c0c0c0;
+    border: 1px solid #808080;
+    border-bottom: none;
+    margin-right: 4px;
     cursor: pointer;
-    color: var(--text-color);
 }
 
 .tab-btn.active {
-    background: var(--primary-color);
-    color: white;
+    background: #fff;
+    border-color: #000;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -2px;
 }
 
-.tab-content {
-    display: none;
+.converter {
+    margin-bottom: 16px;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #808080;
 }
 
-.tab-content.active {
-    display: block;
+h2 {
+    margin-top: 0;
+    font-size: 13px;
+    color: #000080;
 }
 
 .input-group {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: 8px;
+    margin-bottom: 8px;
 }
 
-input[type="number"], input[type="text"] {
+label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+input[type="number"],
+input[type="text"] {
     width: 100%;
-    padding: 8px;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    background: var(--background);
-    color: var(--text-color);
+    padding: 3px;
+    border: 2px solid;
+    border-color: #808080 #dfdfdf #dfdfdf #808080;
+    background: #fff;
+    font-family: 'MS Sans Serif';
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.result {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
 }
 
-input[type="number"] {
-    -moz-appearance: textfield;
+.result input {
+    flex: 1;
+    padding: 3px;
+    border: 2px solid;
+    border-color: #808080 #dfdfdf #dfdfdf #808080;
+    background: #fff;
 }
 
-#colorPreview {
-    width: 100%;
-    height: 80px;
-    border-radius: 8px;
-    border: 2px solid var(--border-color);
-    margin-top: 20px;
+button {
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #dfdfdf #000 #000 #dfdfdf;
+    padding: 3px 12px;
+    font-family: 'MS Sans Serif';
+    cursor: pointer;
+    min-width: 70px;
+}
+
+button:hover {
+    background: #e0e0e0;
+}
+
+button:active {
+    border-color: #000 #dfdfdf #dfdfdf #000;
 }
 
 .copy-btn {
-    padding: 8px 15px;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 6px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #dfdfdf #000 #000 #dfdfdf;
+    padding: 3px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+}
+
+.preview {
+    margin-top: 16px;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #808080;
+}
+
+#colorPreview {
+    height: 60px;
+    background: #fff;
+    border: 2px solid;
+    border-color: #000 #dfdfdf #dfdfdf #000;
+}
+
+.theme-toggle {
+    text-align: right;
+    margin-bottom: 8px;
+}
+
+.theme-toggle button {
+    padding: 3px 8px;
 }

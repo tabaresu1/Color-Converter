@@ -1,103 +1,86 @@
-/* Substitua todo o conteúdo do popup.css por isso: */
 body {
-    font-family: 'MS Sans Serif', 'Segoe UI', sans-serif;
-    background: #008080; /* Azul esverdeado clássico */
-    color: #000;
-    margin: 0;
-    padding: 16px;
+  background: #008080;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 20px;
+  color: black;
 }
 
-.container {
-    width: 100%;
-    max-width: 500px;
-    background: #c0c0c0; /* Cinza do Windows 95 */
-    border: 2px solid #000;
-    border-top-color: #dfdfdf;
-    border-left-color: #dfdfdf;
-    box-shadow: 2px 2px 0 #808080;
-    padding: 8px;
+.window {
+  width: 400px;
+  border: 2px solid #000;
+  background: #c0c0c0;
+  box-shadow: inset -2px -2px 0 #fff, inset 2px 2px 0 #404040;
 }
 
-h1 {
-    background: #000080; /* Azul marinho */
-    color: #fff;
-    padding: 6px;
-    font-size: 16px;
-    margin: -8px -8px 8px -8px;
-    font-weight: bold;
+.title-bar {
+  background: #000080;
+  color: white;
+  padding: 4px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.title-bar-text {
+  margin-left: 6px;
+}
+
+.window-body {
+  padding: 10px;
 }
 
 .tabs {
-    display: flex;
-    border-bottom: 2px solid #000;
-    margin-bottom: 12px;
+  display: flex;
+  margin-bottom: 10px;
 }
 
-.tab-btn {
-    padding: 4px 12px;
-    background: #c0c0c0;
-    border: 1px solid #808080;
-    border-bottom: none;
-    margin-right: 4px;
-    font-size: 12px;
-    cursor: pointer;
+.tab {
+  background: #dfdfdf;
+  border: 2px outset #fff;
+  padding: 4px 10px;
+  margin-right: 2px;
+  cursor: pointer;
 }
 
-.tab-btn.active {
-    background: #fff;
-    border-color: #000;
-    border-bottom: 1px solid #fff;
-    margin-bottom: -2px;
+.tab.active {
+  background: #c0c0c0;
+  border: 2px inset #404040;
 }
 
-.input-group {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    margin-bottom: 12px;
+.tab-panel {
+  display: none;
+  margin-top: 10px;
 }
 
-input[type="number"], 
-input[type="text"] {
-    background: #fff;
-    border: 2px solid #808080;
-    border-top-color: #dfdfdf;
-    border-left-color: #dfdfdf;
-    padding: 4px;
-    font-family: 'MS Sans Serif';
+.tab-panel[aria-hidden="false"] {
+  display: block;
+}
+
+label {
+  display: block;
+  margin: 5px 0;
+}
+
+input {
+  width: 100%;
+  margin-top: 2px;
+  padding: 4px;
+  box-sizing: border-box;
 }
 
 button {
-    background: #c0c0c0;
-    border: 2px solid #000;
-    border-top-color: #dfdfdf;
-    border-left-color: #dfdfdf;
-    padding: 4px 12px;
-    font-family: 'MS Sans Serif';
-    font-size: 12px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #e0e0e0;
+  margin-top: 10px;
+  padding: 4px 10px;
+  background: #dfdfdf;
+  border: 2px outset #fff;
+  cursor: pointer;
 }
 
 button:active {
-    border: 2px solid #808080;
-    border-top-color: #000;
-    border-left-color: #000;
+  border: 2px inset #404040;
 }
 
-.preview {
-    width: 100%;
-    height: 60px;
-    background: #fff;
-    border: 2px solid #808080;
-    margin-top: 12px;
-}
-
-/* Adicione no final para o tema escuro (opcional) */
-body.dark-mode {
-    background: #000;
-    color: #c0c0c0;
+#rgbaOutput, #hexOutput, #cmykOutput {
+  margin-top: 10px;
+  font-weight: bold;
 }

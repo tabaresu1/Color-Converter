@@ -28,8 +28,9 @@ body {
     background: #c0c0c0;
     border: 3px solid;
     border-color: #fff #000 #000 #fff; /* Bordas 3D */
-    padding: 8px;
-    max-width: 500px;
+    padding: 24px 32px 24px 32px; /* padding maior */
+    max-width: 900px; /* aumente conforme desejar */
+    width: 900px;     /* largura fixa para garantir tamanho */
     margin: 0 auto;
     box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
 }
@@ -195,8 +196,8 @@ button:active {
     background: #c0c0c0;
     border-top: 2px solid #fff;
     border-bottom: 2px solid #808080;
-    height: 28px;
-    padding: 2px 4px 2px 2px;
+    height: 44px; /* aumente a altura */
+    padding: 4px 8px 4px 4px; /* padding maior */
     position: fixed;
     bottom: 0;
     left: 0;
@@ -213,15 +214,14 @@ button:active {
     border: 2px outset #fff;
     padding: 0;
     margin-right: 4px;
-    height: 26px;
-    width: 40px; /* ou ajuste conforme o ícone */
+    height: 40px;   /* aumente a altura */
+    width: 80px;    /* aumente a largura */
     cursor: pointer;
 }
 
 .start-img {
-    width: 32px;
-    height: 24px;
-    image-rendering: pixelated;
+    width: 48px;    /* aumente o ícone */
+    height: 32px;
 }
 
 .taskbar-windows {

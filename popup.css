@@ -29,8 +29,9 @@ body {
     border: 3px solid;
     border-color: #fff #000 #000 #fff; /* Bordas 3D */
     padding: 24px 32px 24px 32px; /* padding maior */
-    max-width: 900px; /* aumente conforme desejar */
-    width: 900px;     /* largura fixa para garantir tamanho */
+    max-width: 900px;
+    width: 900px;
+    min-height: 600px; /* aumente este valor conforme desejar */
     margin: 0 auto;
     box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
 }
@@ -214,14 +215,15 @@ button:active {
     border: 2px outset #fff;
     padding: 0;
     margin-right: 4px;
-    height: 40px;   /* aumente a altura */
-    width: 80px;    /* aumente a largura */
+    height: 40px;
+    width: 80px;
     cursor: pointer;
 }
 
 .start-img {
-    width: 48px;    /* aumente o ícone */
-    height: 32px;
+    width: 64px;   /* aumente para quase a largura do botão */
+    height: 36px;  /* aumente para quase a altura do botão */
+    object-fit: cover; /* garante que a imagem não distorça */
 }
 
 .taskbar-windows {

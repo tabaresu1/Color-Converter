@@ -39,40 +39,41 @@ body {
 
 /* ===== BARRA DE TÍTULO ESTILO W95 ===== */
 .title-bar {
-    background: #000080;
-    color: #fff;
-    padding: 8px 12px 8px 8px; /* Aumente o padding para mais espaço interno */
+    background: #000080; /* Azul clássico do Windows 95 */
+    color: #fff; /* Texto branco */
+    padding: 4px 8px; /* Menor espaçamento interno */
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-weight: bold;
-    height: 36px; /* Aumente a altura para ficar mais proporcional */
-    border-bottom: 1px solid #808080;
+    height: 24px; /* Altura menor, mais próxima do Windows 95 */
+    border-bottom: 1px solid #808080; /* Linha inferior cinza */
     position: relative;
-    font-size: 16px; /* Aumente o tamanho da fonte */
+    font-size: 13px; /* Tamanho da fonte menor */
+    font-family: 'W95font', sans-serif;
 }
 
 .window-icon {
-    width: 20px; /* Aumente o tamanho do ícone */
-    height: 20px;
-    margin-right: 8px; /* Ajuste o espaçamento entre o ícone e o texto */
-    image-rendering: pixelated;
+    width: 16px; /* Ícone menor */
+    height: 16px;
+    margin-right: 4px; /* Espaçamento menor entre ícone e texto */
+    image-rendering: pixelated; /* Estilo pixelado */
 }
 
 .title-text {
-    font-size: 14px; /* Ajuste o tamanho da fonte do texto */
+    font-size: 13px; /* Texto menor */
     font-family: 'W95font', sans-serif;
     margin-right: auto;
 }
 
 .window-controls {
     display: flex;
-    gap: 2px;
+    gap: 2px; /* Espaçamento entre os botões */
 }
 
 .win-btn {
-    width: 18px;
-    height: 18px;
+    width: 16px; /* Botões menores */
+    height: 16px;
     display: flex;
     align-items: center;
     justify-content: center;

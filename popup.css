@@ -29,12 +29,12 @@ body {
     background: #c0c0c0;
     border: 3px solid;
     border-color: #fff #000 #000 #fff; /* Bordas 3D */
-    padding: 24px 32px 24px 32px; /* padding maior */
+    padding: 8px 12px; /* Reduza o padding para diminuir o espaço interno */
     max-width: 900px;
     width: 900px;
-    min-height: 600px; /* aumente este valor conforme desejar */
-    margin: 0 auto;
-    box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+    min-height: 600px;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
 }
 
 /* ===== BARRA DE TÍTULO ESTILO W95 ===== */

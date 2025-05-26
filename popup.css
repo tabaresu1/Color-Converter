@@ -422,18 +422,19 @@ button:active {
 .menu-bar u {
     text-decoration: underline;
     text-underline-position: under;
-    text-underline-offset: 2px; /* diminua para aproximar do texto */
+    text-underline-offset: 1px; /* diminua para aproximar do texto */
 }
 
 /* Exemplo para aumentar a barra de menu */
 .menu-bar {
     background: #c0c0c0;
-    padding: 6px 12px; /* aumente o padding vertical */
-    height: 32px;      /* aumente a altura se quiser */
-    font-size: 15px;   /* opcional: aumenta o texto */
+    padding: 6px 12px;
+    height: 32px;
+    font-size: 15px;
     display: flex;
     align-items: center;
     font-family: 'W95font', sans-serif;
+    gap: 2px; /* Adiciona 2px de espaço entre os itens */
 }
 
 .lixeira-window {

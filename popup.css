@@ -46,7 +46,7 @@ body {
     align-items: center;
     justify-content: space-between;
     font-weight: bold;
-    height: 50px; /* Aumente a altura para ficar mais proporcional */
+    height: 36px; /* Aumente a altura para ficar mais proporcional */
     border-bottom: 1px solid #808080;
     position: relative;
     font-size: 16px; /* Aumente o tamanho da fonte */

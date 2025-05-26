@@ -211,20 +211,21 @@ button:active {
 .start-btn {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     background: #ece9d8;
     border: 2px outset #fff;
-    height: 40px;
-    width: 100px; /* ajuste conforme necessário */
-    padding: 0 12px;
-    gap: 8px; /* espaço entre imagem e texto */
-    font-size: 20px; /* aumenta o texto */
+    height: 28px;         /* altura mais próxima do Win95 */
+    width: 36px;          /* largura justa para o ícone */
+    padding: 0;
+    margin-right: 4px;
+    cursor: pointer;
 }
 
 .start-img {
-    width: 100px;
-    height: 40px;
+    width: 28px;          /* ajuste conforme o ícone */
+    height: 24px;
     image-rendering: pixelated;
+    display: block;
 }
 
 .taskbar-windows {

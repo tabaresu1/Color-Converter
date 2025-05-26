@@ -218,7 +218,7 @@ button:active {
     width: 100px;          /* largura justa para o ícone */
     padding: 0;
     margin-right: 4px;
-    cursor: pointer;
+    cursor: default;
 }
 
 .start-img {

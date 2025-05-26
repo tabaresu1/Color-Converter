@@ -262,8 +262,8 @@ button:active {
     border-width: 2px;
     border-top-color: #fff;
     border-left-color: #fff;
-    border-bottom-color: #808080;
-    border-right-color: #808080;
+    border-bottom-color: #000;
+    border-right-color: #000;
     background: #c0c0c0;
 }
 

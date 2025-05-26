@@ -41,25 +41,26 @@ body {
 .title-bar {
     background: #000080;
     color: #fff;
-    padding: 6px 12px 6px 8px;
+    padding: 8px 12px 8px 8px; /* Aumente o padding para mais espaço interno */
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-weight: bold;
-    height: 32px;
+    height: 36px; /* Aumente a altura para ficar mais proporcional */
     border-bottom: 1px solid #808080;
     position: relative;
+    font-size: 16px; /* Aumente o tamanho da fonte */
 }
 
 .window-icon {
-    width: 16px;
-    height: 16px;
-    margin-right: 6px;
+    width: 20px; /* Aumente o tamanho do ícone */
+    height: 20px;
+    margin-right: 8px; /* Ajuste o espaçamento entre o ícone e o texto */
     image-rendering: pixelated;
 }
 
 .title-text {
-    font-size: 13px;
+    font-size: 14px; /* Ajuste o tamanho da fonte do texto */
     font-family: 'W95font', sans-serif;
     margin-right: auto;
 }
@@ -78,7 +79,7 @@ body {
     background: #c0c0c0;
     border: 1px solid #808080;
     margin-left: 2px;
-    cursor: pointer;
+    cursor: default;
     box-sizing: border-box;
 }
 .win-btn:active {
@@ -98,7 +99,7 @@ body {
     border-color: #fff #808080 #808080 #fff;
     padding: 8px 20px;
     margin-right: 2px;
-    cursor: pointer;
+    cursor: default;
 }
 
 .tab-btn.active {
@@ -131,7 +132,7 @@ button {
     border: 2px solid;
     border-color: #fff #808080 #808080 #fff;
     padding: 8px 20px;
-    cursor: pointer;
+    cursor: default;
 }
 
 button:active {
@@ -245,7 +246,7 @@ button:active {
     padding: 6px 20px 6px 8px; /* padding maior */
     height: 40px;              /* altura igual ao start-btn */
     min-width: 110px;          /* largura mínima maior */
-    cursor: pointer;
+    cursor: default;
     margin-right: 4px;
     box-sizing: border-box;
 }

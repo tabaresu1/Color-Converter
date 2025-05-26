@@ -434,7 +434,7 @@ button:active {
     display: flex;
     align-items: center;
     font-family: 'W95font', sans-serif;
-    gap: 2px; /* Adiciona 2px de espaço entre os itens */
+    gap: 4px; /* Adiciona 2px de espaço entre os itens */
 }
 
 .lixeira-window {

@@ -214,16 +214,16 @@ button:active {
     justify-content: center;
     background: #ece9d8;
     border: 2px outset #fff;
-    height: 28px;         /* altura mais próxima do Win95 */
-    width: 36px;          /* largura justa para o ícone */
+    height: 40px;         /* altura mais próxima do Win95 */
+    width: 100px;          /* largura justa para o ícone */
     padding: 0;
     margin-right: 4px;
     cursor: pointer;
 }
 
 .start-img {
-    width: 28px;          /* ajuste conforme o ícone */
-    height: 24px;
+    width: 100px;          /* ajuste conforme o ícone */
+    height: 40px;
     image-rendering: pixelated;
     display: block;
 }

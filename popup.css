@@ -20,7 +20,7 @@ body {
     padding: 20px;
     color: #000;
     font-size: 12px;
-    cursor: url('assets/cursors/arrow.png'), default;
+    cursor: url('assets/cursors/arrow.cur'), default !important;
 }
 
 .container {

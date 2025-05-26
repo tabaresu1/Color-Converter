@@ -422,14 +422,14 @@ button:active {
 .menu-bar u {
     text-decoration: underline;
     text-underline-position: under;
-    text-underline-offset: 1px; /* diminua para aproximar do texto */
+    text-underline-offset: 0.1px; /* diminua para aproximar do texto */
 }
 
 /* Exemplo para aumentar a barra de menu */
 .menu-bar {
     background: #c0c0c0;
     padding: 6px 12px;
-    height: 32px;
+    height: 24px;
     font-size: 15px;
     display: flex;
     align-items: center;

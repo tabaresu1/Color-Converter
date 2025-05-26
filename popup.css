@@ -382,14 +382,6 @@ button:active {
     word-break: break-word;
 }
 
-.desktop-icon.selected span {
-    background: #000080;
-    color: #fff;
-    border: 1px dotted #fff;
-    padding: 1px 2px;
-    border-radius: 2px;
-}
-
 .icon-area {
     display: flex;
     align-items: center;

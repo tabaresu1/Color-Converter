@@ -222,8 +222,8 @@ button:active {
 }
 
 .start-img {
-    width: 32px;
-    height: 24px;
+    width: 100px;
+    height: 40px;
     image-rendering: pixelated;
 }
 

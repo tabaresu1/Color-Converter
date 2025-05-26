@@ -260,10 +260,10 @@ button:active {
 .taskbar-window-btn.active {
     border-style: solid;
     border-width: 2px;
-    border-top-color: #808080;
-    border-left-color: #808080;
-    border-bottom-color: #fff;
-    border-right-color: #fff;
+    border-top-color: #fff;
+    border-left-color: #fff;
+    border-bottom-color: #808080;
+    border-right-color: #808080;
     background: #c0c0c0;
 }
 

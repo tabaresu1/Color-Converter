@@ -240,20 +240,20 @@ button:active {
     align-items: center;
     background: #ece9d8;
     border: 2px outset #fff;
-    font-size: 16px;
+    font-size: 18px;           /* aumenta o tamanho da fonte */
     font-family: 'W95font', sans-serif;
-    padding: 2px 12px 2px 4px;
-    height: 32px;
-    min-width: 90px;
+    padding: 6px 20px 6px 8px; /* padding maior */
+    height: 40px;              /* altura igual ao start-btn */
+    min-width: 110px;          /* largura mínima maior */
     cursor: pointer;
     margin-right: 4px;
     box-sizing: border-box;
 }
 
 .taskbar-window-btn img {
-    width: 22px;
-    height: 22px;
-    margin-right: 6px;
+    width: 28px;               /* aumenta o ícone */
+    height: 28px;
+    margin-right: 8px;
     image-rendering: pixelated;
 }
 

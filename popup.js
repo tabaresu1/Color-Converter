@@ -264,6 +264,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     setInterval(updateTaskbarClock, 1000);
     updateTaskbarClock();
+
+    // ===== SELEÇÃO DE ÍCONES NA ÁREA DE TRABALHO =====
+    document.querySelectorAll('.desktop-icon').forEach(icon => {
+        icon.addEventListener('click', function (e) {
+            // Remove seleção de todos
+            document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
+            // Seleciona o clicado
+            this.classList.add('selected');
+            e.stopPropagation();
+        });
+    });
+
+    // Remove seleção ao clicar fora dos ícones
+    document.addEventListener('click', function () {
+        document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
+    });
 });
 
 function addTaskbarButton(windowId, iconSrc, label) {

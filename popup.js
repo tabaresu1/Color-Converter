@@ -281,11 +281,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
     });
 
-    document.getElementById('openDoom').addEventListener('click', function() {
-        const doomContainer = document.getElementById('doom-container');
-        doomContainer.style.display = 'block';
-        Dos(doomContainer).run('https://js-dos.com/cdn/upload/DOOM.EXE');
-    });
 
     document.getElementById('closeDoom').addEventListener('click', function() {
         const doomContainer = document.getElementById('doom-container');

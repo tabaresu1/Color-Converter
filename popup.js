@@ -290,14 +290,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (doomIcon && doomContainer && closeDoomBtn) {
         doomIcon.addEventListener('dblclick', function() {
             doomContainer.style.display = 'block';
-            Dos(doomContainer).run('https://js-dos.com/cdn/upload/DOOM.EXE');
+            Dos(doomContainer).run('assets/games/doom.zip');
         });
 
         closeDoomBtn.addEventListener('click', function closeHandler() {
             doomContainer.style.display = 'none';
-            // Limpa o conteúdo do Doom, mas mantém o botão de fechar
             doomContainer.innerHTML = '<button id="closeDoom" style="position:absolute;top:4px;right:4px;z-index:10;">X</button>';
-            // Reanexa o evento ao novo botão
             document.getElementById('closeDoom').addEventListener('click', closeHandler);
         });
     }

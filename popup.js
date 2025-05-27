@@ -280,35 +280,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function () {
         document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
     });
-
-
-    // ===== DOOM =====
-    const doomIcon = document.getElementById('doom-icon');
-    const doomWindow = document.getElementById('doom-window');
-    const doomContainer = document.getElementById('doom-container');
-    const closeDoomBtn = document.getElementById('closeDoom');
-
-    if (doomIcon && doomWindow && doomContainer && closeDoomBtn) {
-        doomIcon.addEventListener('dblclick', function() {
-            doomWindow.style.display = 'block';
-            // Limpa o container ANTES de rodar o js-dos
-            while (doomContainer.firstChild) {
-                doomContainer.removeChild(doomContainer.firstChild);
-            }
-            if (!doomContainer.querySelector('canvas')) {
-                Dos(doomContainer, { wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js" })
-                  .ready((fs, main) => {
-                    fs.extract('assets/games/doom.zip').then(() => {
-                      main(["FDOOM.EXE"]);
-                    });
-                  });
-            }
-        });
-
-        closeDoomBtn.addEventListener('click', function() {
-            doomWindow.style.display = 'none';
-        });
-    }
 });
 
 function addTaskbarButton(windowId, iconSrc, label) {

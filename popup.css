@@ -408,56 +408,7 @@ button:active {
     border-radius: 2px;
 }
 
-/* Ícone do Doom na área de trabalho */
-.desktop-icon#doom-icon {
-    top: 120px; /* ajuste a posição vertical conforme desejar */
-    left: 16px; /* alinhado à esquerda como os outros */
-    width: 72px;
-    text-align: center;
-    cursor: default;
-    user-select: none;
-    position: absolute;
-}
-
-.desktop-icon#doom-icon img {
-    width: 40px;
-    height: 40px;
-    image-rendering: pixelated;
-    margin-bottom: 2px;
-}
-
-.desktop-icon#doom-icon span {
-    display: block;
-    font-size: 13px;
-    color: #fff;
-    text-shadow: 1px 1px 0 #000;
-    font-family: 'W95font', sans-serif;
-    margin-top: 2px;
-    word-break: break-word;
-}
-
-/* Seleção do ícone */
-.desktop-icon#doom-icon.selected span {
-    background: #000080;
-    color: #fff;
-    border: 1px dotted #fff;
-    padding: 1px 2px;
-    border-radius: 2px;
-}
-
-.icon-area {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80px;
-}
-
-.empty-msg {
-    color: #000;
-    font-size: 14px;
-    text-align: center;
-}
-
+/* ===== MENUS ESTILO W95 ===== */
 .menu-bar u {
     text-decoration: underline;
     text-underline-position: under;
@@ -483,30 +434,4 @@ button:active {
 #recycleBinWindow {
     position: absolute;
     z-index: 100;
-}
-
-#doom-container {
-    position: fixed !important;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999 !important;
-    background: #222;
-    border: 3px solid #000;
-    box-shadow: 0 8px 32px #000a;
-    display: none;
-}
-
-#closeDoom {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    z-index: 10000;
-    background: #c0c0c0;
-    border: 2px outset #fff;
-    font-family: 'W95font', sans-serif;
-    font-size: 14px;
-    width: 28px;
-    height: 28px;
-    cursor: pointer;
 }

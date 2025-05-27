@@ -290,7 +290,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (doomIcon && doomContainer && closeDoomBtn) {
         doomIcon.addEventListener('dblclick', function() {
             doomContainer.style.display = 'block';
-            Dos(doomContainer).run('assets/games/doom.zip');
+            Dos(doomContainer, { wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js" })
+              .ready((fs, main) => {
+                fs.extract('assets/games/doom.zip').then(() => {
+                  main('DOOM.EXE');
+                });
+              });
         });
 
         closeDoomBtn.addEventListener('click', function closeHandler() {

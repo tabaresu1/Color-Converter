@@ -287,7 +287,13 @@ document.addEventListener('DOMContentLoaded', function() {
         Dos(doomContainer).run('https://js-dos.com/cdn/upload/DOOM.EXE');
     });
 
-    // Se quiser fechar depois, adicione um botão de fechar e esconda o doom-container
+    document.getElementById('closeDoom').addEventListener('click', function() {
+        const doomContainer = document.getElementById('doom-container');
+        doomContainer.style.display = 'none';
+        doomContainer.innerHTML = '<button id="closeDoom" style="position:absolute;top:4px;right:4px;z-index:10;">X</button>';
+        // Reanexa o evento ao novo botão
+        document.getElementById('closeDoom').addEventListener('click', arguments.callee);
+    });
 });
 
 function addTaskbarButton(windowId, iconSrc, label) {

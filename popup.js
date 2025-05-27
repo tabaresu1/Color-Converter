@@ -290,6 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('closeDoom').addEventListener('click', function() {
         const doomContainer = document.getElementById('doom-container');
         doomContainer.style.display = 'none';
+        // Limpa o conteúdo do Doom, mas mantém o botão de fechar
         doomContainer.innerHTML = '<button id="closeDoom" style="position:absolute;top:4px;right:4px;z-index:10;">X</button>';
         // Reanexa o evento ao novo botão
         document.getElementById('closeDoom').addEventListener('click', arguments.callee);

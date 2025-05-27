@@ -484,3 +484,29 @@ button:active {
     position: absolute;
     z-index: 100;
 }
+
+#doom-container {
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999 !important;
+    background: #222;
+    border: 3px solid #000;
+    box-shadow: 0 8px 32px #000a;
+    display: none;
+}
+
+#closeDoom {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 10000;
+    background: #c0c0c0;
+    border: 2px outset #fff;
+    font-family: 'W95font', sans-serif;
+    font-size: 14px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}

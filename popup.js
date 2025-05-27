@@ -290,18 +290,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (doomIcon && doomContainer && closeDoomBtn) {
         doomIcon.addEventListener('dblclick', function() {
             doomContainer.style.display = 'block';
-            Dos(doomContainer, { wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js" })
-              .ready((fs, main) => {
-                fs.extract('assets/games/doom.zip').then(() => {
-                  main(["DOOM.EXE"]); // <-- Corrigido aqui!
-                });
-              });
+            // Só inicializa se não houver canvas (evita múltiplas instâncias)
+            if (!doomContainer.querySelector('canvas')) {
+                Dos(doomContainer, { wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js" })
+                  .ready((fs, main) => {
+                    fs.extract('assets/games/doom.zip').then(() => {
+                      main(["DOOM.EXE"]);
+                    });
+                  });
+            }
         });
 
-        closeDoomBtn.addEventListener('click', function closeHandler() {
+        closeDoomBtn.addEventListener('click', function() {
             doomContainer.style.display = 'none';
-            doomContainer.innerHTML = '<button id="closeDoom" style="position:absolute;top:4px;right:4px;z-index:10;">X</button>';
-            document.getElementById('closeDoom').addEventListener('click', closeHandler);
         });
     }
 });

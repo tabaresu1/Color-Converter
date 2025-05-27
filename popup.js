@@ -284,12 +284,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ===== DOOM =====
     const doomIcon = document.getElementById('doom-icon');
+    const doomWindow = document.getElementById('doom-window');
     const doomContainer = document.getElementById('doom-container');
     const closeDoomBtn = document.getElementById('closeDoom');
 
-    if (doomIcon && doomContainer && closeDoomBtn) {
+    if (doomIcon && doomWindow && doomContainer && closeDoomBtn) {
         doomIcon.addEventListener('dblclick', function() {
-            doomContainer.style.display = 'block';
+            doomWindow.style.display = 'block';
             // Só inicializa se não houver canvas (evita múltiplas instâncias)
             if (!doomContainer.querySelector('canvas')) {
                 Dos(doomContainer, { wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js" })
@@ -302,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         closeDoomBtn.addEventListener('click', function() {
-            doomContainer.style.display = 'none';
+            doomWindow.style.display = 'none';
         });
     }
 });

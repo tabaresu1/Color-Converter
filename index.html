@@ -17,6 +17,11 @@
     <title>Conversor de Cores</title>
     <link rel="stylesheet" href="popup.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- js-dos style sheet -->
+    <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+
+<!-- js-dos -->
+    <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
 </head>
 <body>
   <div class="desktop">
@@ -255,6 +260,13 @@
     <div class="status-corner"></div>
   </div>
 </div>
+<div id="dos" style="width: 100vw; height: 60vw;"></div>
+
+<script>
+    Dos(document.getElementById("dos"), {
+        url: "https://v8.js-dos.com/bundles/digger.jsdos",
+    });
+</script>
 
 <script src="popup.js"></script>
 </html>

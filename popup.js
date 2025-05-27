@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 Dos(doomContainer, { wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js" })
                   .ready((fs, main) => {
                     fs.extract('assets/games/doom.zip').then(() => {
-                      main(["DOOM.EXE"]);
+                      main(["FDOOM.EXE"]);
                     });
                   });
             }

@@ -261,11 +261,32 @@
   </div>
 </div>
 <div id="dos" style="width: 100vw; height: 60vw;"></div>
+<p>
+  <a id="fullscreen_DOOM" href="javascript: void 0;" class="fa-solid fa-expand"></a>&nbsp;&nbsp;FULLSCREEN
+</p>
 
 <script>
     Dos(document.getElementById("dos"), {
         url: "https://v8.js-dos.com/bundles/digger.jsdos",
     });
+</script>
+
+<script>
+  var dosbox_DOOM = new Dosbox({
+    id: "dos",
+    onload: function (dosbox) {
+      dosbox_DOOM.run("https://thedoggybrad.github.io/doom_on_js-dos/DOOM-@evilution.zip", "./DOOM/DOOM.EXE");
+    },
+    onrun: function (dosbox, app) {
+      console.log("App '" + app + "' is running");
+    }
+  });
+</script>
+
+<script>
+  document.getElementById("fullscreen_DOOM").addEventListener("click", function() {
+    dosbox_DOOM.requestFullScreen();
+  });
 </script>
 
 <script src="popup.js"></script>

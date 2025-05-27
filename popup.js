@@ -303,3 +303,20 @@ function removeTaskbarButton(windowId) {
     if (btn) btn.remove();
 }
 
+function loadDoom() {
+  if (!dosbox_DOOM) {
+    dosbox_DOOM = new Dosbox({
+      id: "dos",
+      onload: function (dosbox) {
+        dosbox_DOOM.run("https://thedoggybrad.github.io/doom_on_js-dos/DOOM-@evilution.zip", "./DOOM/DOOM.EXE");
+      },
+      onrun: function (dosbox, app) {
+        console.log("App '" + app + "' is running");
+      }
+    });
+  }
+
+  // Exibe o contêiner do jogo
+  document.getElementById("dos").style.display = "block";
+}
+

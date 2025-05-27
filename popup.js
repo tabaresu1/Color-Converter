@@ -291,14 +291,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if (doomIcon && doomWindow && doomContainer && closeDoomBtn) {
         doomIcon.addEventListener('dblclick', function() {
             doomWindow.style.display = 'block';
-            // Limpa o container ANTES de rodar o js-dos (mas não mexa no botão de fechar!)
-            doomContainer.innerHTML = '';
-            Dos(doomContainer, { wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js" })
-              .ready((fs, main) => {
-                fs.extract('assets/games/doom.zip').then(() => {
-                  main(["FDOOM.EXE"]);
-                });
-              });
+            // Limpa o container ANTES de rodar o js-dos
+            while (doomContainer.firstChild) {
+                doomContainer.removeChild(doomContainer.firstChild);
+            }
+            if (!doomContainer.querySelector('canvas')) {
+                Dos(doomContainer, { wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js" })
+                  .ready((fs, main) => {
+                    fs.extract('assets/games/doom.zip').then(() => {
+                      main(["FDOOM.EXE"]);
+                    });
+                  });
+            }
         });
 
         closeDoomBtn.addEventListener('click', function() {

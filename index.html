@@ -256,33 +256,5 @@
   </div>
 </div>
 
-<!-- Contêiner do DOOM -->
-<div id="doom-container" style="width: 640px; height: 480px; margin: auto; display: none;"></div>
-<button id="doom-fullscreen" style="display: none;" onclick="dosbox.requestFullScreen();">Tela Cheia</button>
-<button id="doom-close" style="display: none;" onclick="closeDoom()">Fechar</button>
-
-<script src="https://js-dos.com/6.22/current/js-dos.js"></script>
-<script>
-  let dosbox;
-
-  function loadDoom() {
-    if (!dosbox) {
-      dosbox = Dos(document.getElementById("doom-container"), {
-        wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
-      });
-
-      dosbox.run("assets/games/DOOM.zip", "./doom");
-    }
-
-    document.getElementById("doom-container").style.display = "block";
-    document.getElementById("doom-fullscreen").style.display = "inline-block";
-  }
-
-  function closeDoom() {
-    document.getElementById("doom-container").style.display = "none";
-    document.getElementById("doom-fullscreen").style.display = "none";
-    dosbox = null;
-  }
-</script>
 <script src="popup.js"></script>
 </html>

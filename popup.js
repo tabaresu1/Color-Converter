@@ -303,33 +303,3 @@ function removeTaskbarButton(windowId) {
     if (btn) btn.remove();
 }
 
-function closeDoom() {
-  document.getElementById("doom-container").style.display = "none";
-  document.getElementById("doom-fullscreen").style.display = "none";
-  document.getElementById("doom-close").style.display = "none";
-
-  // Opcional: Finalize o dosbox
-  if (dosbox) {
-    dosbox.exit(); // Finaliza o emulador
-    dosbox = null; // Libera a instância
-  }
-}
-
-function loadDoom() {
-  if (!dosbox) {
-    dosbox = Dos(document.getElementById("doom-container"), {
-      wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
-    });
-
-    try {
-      dosbox.run("assets/games/DOOM.zip", "./doom");
-    } catch (error) {
-      console.error("Erro ao carregar o DOOM:", error);
-      alert("Não foi possível carregar o DOOM. Verifique se o arquivo está no local correto.");
-    }
-  }
-
-  document.getElementById("doom-container").style.display = "block";
-  document.getElementById("doom-fullscreen").style.display = "inline-block";
-  document.getElementById("doom-close").style.display = "inline-block";
-}

@@ -308,10 +308,10 @@ function closeDoom() {
   document.getElementById("doom-fullscreen").style.display = "none";
   document.getElementById("doom-close").style.display = "none";
 
-  // Opcional: Reinicie o dosbox para liberar recursos
+  // Opcional: Finalize o dosbox
   if (dosbox) {
-    dosbox.stop();
-    dosbox = null;
+    dosbox.exit(); // Finaliza o emulador
+    dosbox = null; // Libera a instância
   }
 }
 
@@ -321,12 +321,12 @@ function loadDoom() {
       wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
     });
 
-    dosbox.ready.then(() => {
+    try {
       dosbox.run("assets/games/DOOM.zip", "./doom");
-    }).catch((error) => {
+    } catch (error) {
       console.error("Erro ao carregar o DOOM:", error);
       alert("Não foi possível carregar o DOOM. Verifique se o arquivo está no local correto.");
-    });
+    }
   }
 
   document.getElementById("doom-container").style.display = "block";

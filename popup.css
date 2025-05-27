@@ -444,6 +444,8 @@ button:active {
   background: #000;
   border: 3px solid #fff;
   z-index: 1000;
+  width: 640px;
+  height: 480px;
 }
 
 #doom-close {

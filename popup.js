@@ -302,3 +302,23 @@ function removeTaskbarButton(windowId) {
     const btn = document.getElementById('taskbar-btn-' + windowId);
     if (btn) btn.remove();
 }
+
+function closeDoom() {
+  document.getElementById("doom-container").style.display = "none";
+  document.getElementById("doom-fullscreen").style.display = "none";
+  document.getElementById("doom-close").style.display = "none";
+}
+
+function loadDoom() {
+  if (!dosbox) {
+    dosbox = Dos(document.getElementById("doom-container"), {
+      wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+    });
+
+    dosbox.run("assets/games/DOOM.zip", "./doom");
+  }
+
+  document.getElementById("doom-container").style.display = "block";
+  document.getElementById("doom-fullscreen").style.display = "inline-block";
+  document.getElementById("doom-close").style.display = "inline-block";
+}

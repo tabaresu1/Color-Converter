@@ -37,7 +37,7 @@
       <span>Gato</span>
     </div>
     <div class="desktop-icon" id="doom-icon" style="top: 384px;">
-      <img src="assets/icons/doom.ico" alt="Doom">
+      <img src="assets/icons/doom.ico" alt="Doom" onclick="loadDoom()" style="cursor: pointer;">
       <span>Doom</span>
     </div>
   </div>
@@ -255,6 +255,27 @@
     <div class="status-corner"></div>
   </div>
 </div>
+
+<!-- Contêiner do DOOM -->
+<div id="doom-container" style="width: 640px; height: 480px; margin: auto; display: none;"></div>
+<button id="doom-fullscreen" style="display: none;" onclick="dosbox.requestFullScreen();">Tela Cheia</button>
+
 <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+<script>
+  let dosbox;
+
+  function loadDoom() {
+    if (!dosbox) {
+      dosbox = Dos(document.getElementById("doom-container"), {
+        wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+      });
+
+      dosbox.run("assets/games/DOOM.zip", "./doom");
+    }
+
+    document.getElementById("doom-container").style.display = "block";
+    document.getElementById("doom-fullscreen").style.display = "inline-block";
+  }
+</script>
 <script src="popup.js"></script>
 </html>

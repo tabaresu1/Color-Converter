@@ -408,6 +408,43 @@ button:active {
     border-radius: 2px;
 }
 
+/* Ícone do Doom na área de trabalho */
+.desktop-icon#doom-icon {
+    top: 120px; /* ajuste a posição vertical conforme desejar */
+    left: 16px; /* alinhado à esquerda como os outros */
+    width: 72px;
+    text-align: center;
+    cursor: default;
+    user-select: none;
+    position: absolute;
+}
+
+.desktop-icon#doom-icon img {
+    width: 40px;
+    height: 40px;
+    image-rendering: pixelated;
+    margin-bottom: 2px;
+}
+
+.desktop-icon#doom-icon span {
+    display: block;
+    font-size: 13px;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+    font-family: 'W95font', sans-serif;
+    margin-top: 2px;
+    word-break: break-word;
+}
+
+/* Seleção do ícone */
+.desktop-icon#doom-icon.selected span {
+    background: #000080;
+    color: #fff;
+    border: 1px dotted #fff;
+    padding: 1px 2px;
+    border-radius: 2px;
+}
+
 .icon-area {
     display: flex;
     align-items: center;

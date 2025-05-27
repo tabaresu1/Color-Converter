@@ -294,6 +294,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reanexa o evento ao novo botão
         document.getElementById('closeDoom').addEventListener('click', arguments.callee);
     });
+
+    document.getElementById('doom-icon').addEventListener('dblclick', function() {
+        const doomContainer = document.getElementById('doom-container');
+        doomContainer.style.display = 'block';
+        Dos(doomContainer).run('https://js-dos.com/cdn/upload/DOOM.EXE');
+    });
 });
 
 function addTaskbarButton(windowId, iconSrc, label) {

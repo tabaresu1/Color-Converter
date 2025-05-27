@@ -280,6 +280,14 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function () {
         document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
     });
+
+    document.getElementById('openDoom').addEventListener('click', function() {
+        const doomContainer = document.getElementById('doom-container');
+        doomContainer.style.display = 'block';
+        Dos(doomContainer).run('https://js-dos.com/cdn/upload/DOOM.EXE');
+    });
+
+    // Se quiser fechar depois, adicione um botão de fechar e esconda o doom-container
 });
 
 function addTaskbarButton(windowId, iconSrc, label) {

@@ -17,6 +17,11 @@
     <title>Conversor de Cores</title>
     <link rel="stylesheet" href="popup.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- js-dos style sheet -->
+    <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+
+<!-- js-dos -->
+    <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
 </head>
 <body>
   <div class="desktop">
@@ -37,7 +42,7 @@
       <span>Gato</span>
     </div>
     <div class="desktop-icon" id="doom-icon" style="top: 384px;">
-      <img src="assets/icons/doom.ico" alt="Doom">
+      <img src="assets/icons/doom.ico" alt="Doom" ondblclick="loadDoom()" style="cursor: pointer;">
       <span>Doom</span>
     </div>
   </div>
@@ -255,6 +260,28 @@
     <div class="status-corner"></div>
   </div>
 </div>
-<script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+<div id="dos" style="width: 100vw; height: 60vw;"></div>
+<p>
+  <a id="fullscreen_DOOM" href="javascript: void 0;" class="fa-solid fa-expand"></a>&nbsp;&nbsp;FULLSCREEN
+</p>
+
+<script>
+  var dosbox_DOOM = new Dosbox({
+    id: "dos",
+    onload: function (dosbox) {
+      dosbox_DOOM.run("https://thedoggybrad.github.io/doom_on_js-dos/DOOM-@evilution.zip", "./DOOM/DOOM.EXE");
+    },
+    onrun: function (dosbox, app) {
+      console.log("App '" + app + "' is running");
+    }
+  });
+</script>
+
+<script>
+  document.getElementById("fullscreen_DOOM").addEventListener("click", function() {
+    dosbox_DOOM.requestFullScreen();
+  });
+</script>
+
 <script src="popup.js"></script>
 </html>

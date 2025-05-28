@@ -126,18 +126,36 @@ input[type="text"] {
     margin: 6px;
 }
 
+input {
+  background-color: #fff; /* Fundo branco */
+  color: #000; /* Texto preto */
+  border: 1px solid #000; /* Borda preta */
+  padding: 2px;
+  font-family: 'W95font', sans-serif;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #000080; /* Destaque azul ao focar */
+}
+
 /* ===== BOTÕES ESTILO W95 ===== */
 /* Botões maiores */
 button {
-    background: #c0c0c0;
-    border: 2px solid;
-    border-color: #fff #808080 #808080 #fff;
-    padding: 8px 20px;
-    cursor: default;
+  background-color: #c0c0c0; /* Fundo cinza claro */
+  color: #000; /* Texto preto */
+  border: 1px solid #808080; /* Borda cinza */
+  padding: 2px 6px;
+  font-family: 'W95font', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
 }
 
-button:active {
-    border-color: #808080 #fff #fff #808080;
+button:hover {
+  background-color: #fff; /* Fundo branco ao passar o mouse */
+  border: 1px solid #000; /* Borda preta ao passar o mouse */
 }
 
 /* ===== PRÉ-VISUALIZAÇÃO ===== */

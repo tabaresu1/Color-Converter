@@ -33,12 +33,13 @@ html, body {
     z-index: 10;
     background: #c0c0c0;
     border: 3px solid;
-    border-color: #fff #000 #000 #fff; /* Bordas 3D */
-    padding: 8px 8px; /* Reduza o padding para diminuir o espaço interno */
-    max-width: 900px;
-    width: 900px;
-    min-height: 600px;
-    margin: 0 auto; /* Centraliza horizontalmente */
+    border-color: #fff #000 #000 #fff;
+    padding: 8px 8px;
+    max-width: 480px;
+    width: 100%;
+    min-width: 320px;
+    min-height: 0;
+    margin: 40px auto;
     box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
 }
 

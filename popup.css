@@ -153,6 +153,8 @@ button {
   color: #000; /* Texto preto */
   border: 1px solid #808080; /* Borda cinza */
   padding: 2px 6px;
+  width: 100px;
+  height: auto;
   font-family: 'W95font', sans-serif;
   font-size: 12px;
   cursor: pointer;

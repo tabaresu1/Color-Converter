@@ -23,6 +23,11 @@ body {
     cursor: url('assets/cursors/arrow.cur'), default !important;
 }
 
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
 .container {
     position: relative;
     z-index: 10;
@@ -389,6 +394,7 @@ button:hover {
     top: 0; left: 0;
     width: 100vw; height: 100vh;
     z-index: 0;
+    overflow: hidden;
 }
 
 .desktop-icon {

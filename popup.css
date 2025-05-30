@@ -35,7 +35,7 @@ html, body {
     border: 3px solid;
     border-color: #fff #000 #000 #fff;
     padding: 8px 8px;
-    max-width: 480px;
+    max-width: 100%;
     min-width: 320px;
     min-height: 0;
     margin: 40px auto;
